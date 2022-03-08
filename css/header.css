@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@font-face {
+  font-family: "centurygothic";
+  src: url("../media/fonts/Century-Gothic/centurygothic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "centurygothic_bold";
+  src: url("../media/fonts/Century-Gothic/centurygothic_bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: bold;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.a {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  width: 94%;
+  font-family: 'Montserrat', sans-serif;
+  padding: 46px 3%;
+}
+
+.header .header__wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header .header__wrapper .logo {
+  width: 137px;
+  height: 61px;
+  display: inline-block;
+}
+
+.header .header__wrapper .logo .img-logo {
+  width: 137px;
+  height: 61px;
+}
+
+.header .header__wrapper .header__end {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.header .header__wrapper .header__end .header-ul {
+  display: inline-block;
+  margin: 0 80px 0 auto;
+}
+
+.header .header__wrapper .header__end .header-ul .header-li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 35px;
+}
+
+.header .header__wrapper .header__end .header-ul .header-li .header-links {
+  font-size: 26px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #000;
+}
+
+.header .header__wrapper .header__end .header-ul .header-li .header-links .header-links__upper-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 10px;
+  text-align: right;
+}
+
+.header .header__wrapper .header__end .header-ul .header-li .header-links:hover {
+  color: #FF003D;
+}
+
+.header .header__wrapper .header__end .menu-btn {
+  display: inline-block;
+  margin: 0 0 15px auto;
+  cursor: pointer;
+}
+
+.header .header__wrapper .header__end .menu-btn .menu-btn__img {
+  display: inline-block;
+}
+/*# sourceMappingURL=header.css.map */
