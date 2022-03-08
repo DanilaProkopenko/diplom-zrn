@@ -29,6 +29,10 @@
   color: #fff;
 }
 
+.footer .footer__wrapper .footer__upper-line .footer-ul .footer-li .footer-links:hover {
+  color: #FF003D;
+}
+
 .footer .footer__wrapper .footer__upper-line .address {
   color: #8D8D8D;
   font-size: 20px;
