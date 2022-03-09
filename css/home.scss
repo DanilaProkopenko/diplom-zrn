@@ -1,6 +1,40 @@
-.bold{
+.bold {
     font-family: "centurygothic_bold";
 }
-.regular{
+
+.regular {
     font-family: "centurygothic";
+}
+
+
+ul li:after {
+    content: url('../images/small_triangle.png');
+}
+
+
+.wrapper {
+
+    .content {
+        background-color: black;
+
+        .slide-detect {
+            position: fixed;
+            right: 3%;
+            left: auto;
+            .slide-detect__ul {
+
+
+                .slide-detect__li {
+                    list-style: none;
+                    margin-bottom: 25px;
+                    &::after {
+                        display : block;
+                        width  : 20px;
+                        height : 20px;
+                        content: url('../media/image/buttons/slide-detect/white-oval.svg');
+                    }
+                }
+            }
+        }
+    }
 }
