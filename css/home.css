@@ -10,14 +10,20 @@ ul li:after {
   content: url("../images/small_triangle.png");
 }
 
+.wrapper {
+  width: 100%;
+}
+
 .wrapper .content {
-  background-color: black;
+  width: 100%;
 }
 
 .wrapper .content .slide-detect {
   position: fixed;
   right: 3%;
   left: auto;
+  top: 40%;
+  z-index: 10;
 }
 
 .wrapper .content .slide-detect .slide-detect__ul .slide-detect__li {
@@ -30,5 +36,34 @@ ul li:after {
   width: 20px;
   height: 20px;
   content: url("../media/image/buttons/slide-detect/white-oval.svg");
+}
+
+.wrapper .content .works {
+  width: 100%;
+  z-index: 1;
+}
+
+.wrapper .content .works .work__box {
+  width: 100%;
+  position: relative;
+  margin-bottom: -5px;
+}
+
+.wrapper .content .works .work__box .work__thumb {
+  width: 100%;
+}
+
+.wrapper .content .works .work__box .work__thumb .work__thumb__img {
+  width: 100%;
+}
+
+.wrapper .content .works .work__box .work__name {
+  position: absolute;
+  bottom: 50px;
+  left: 3%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 60px;
+  color: #fff;
 }
 /*# sourceMappingURL=home.css.map */

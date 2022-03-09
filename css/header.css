@@ -23,9 +23,11 @@
 }
 
 .header {
+  position: fixed;
   width: 94%;
   font-family: 'Montserrat', sans-serif;
   padding: 46px 3%;
+  z-index: 10;
 }
 
 .header .header__wrapper {

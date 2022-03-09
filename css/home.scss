@@ -13,26 +13,58 @@ ul li:after {
 
 
 .wrapper {
+    width: 100%;
 
     .content {
-        background-color: black;
+        width: 100%;
 
         .slide-detect {
             position: fixed;
-            right: 3%;
-            left: auto;
+            right   : 3%;
+            left    : auto;
+            top     : 40%;
+
+            z-index: 10;
             .slide-detect__ul {
 
 
                 .slide-detect__li {
-                    list-style: none;
+                    list-style   : none;
                     margin-bottom: 25px;
+
                     &::after {
-                        display : block;
+                        display: block;
                         width  : 20px;
                         height : 20px;
                         content: url('../media/image/buttons/slide-detect/white-oval.svg');
                     }
+                }
+            }
+        }
+
+        .works {
+            width: 100%;
+            z-index: 1;
+            .work__box {
+                width: 100%;
+                position: relative;
+                margin-bottom: -5px;
+                .work__thumb {
+                    width: 100%;
+                    .work__thumb__img{
+                        width: 100%;
+                    }
+                }
+
+                .work__name {
+                    position: absolute;
+                    // top: 20px;
+                    bottom: 50px;
+                    left: 3%;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 600;
+                    font-size  : 60px;
+                    color: #fff;
                 }
             }
         }

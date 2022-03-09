@@ -28,10 +28,12 @@
 }
 
 .header {
+    position   : fixed;
     width      : 94%;
     font-family: 'Montserrat', sans-serif;
     padding    : 46px 3%;
 
+    z-index: 10;
     .header__wrapper {
         width          : 100%;
         display        : flex;
@@ -73,7 +75,8 @@
                             line-height: 10px;
                             text-align : right;
                         }
-                        &:hover{
+
+                        &:hover {
                             color: #FF003D;
                         }
                     }
@@ -83,7 +86,7 @@
             .menu-btn {
                 display: inline-block;
                 margin : 0 0 15px auto;
-                cursor: pointer;
+                cursor : pointer;
 
                 .menu-btn__img {
                     display: inline-block;
