@@ -24,6 +24,7 @@
 
 .header {
   position: fixed;
+  top: -10px;
   width: 94%;
   font-family: 'Montserrat', sans-serif;
   padding: 46px 3%;

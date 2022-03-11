@@ -29,11 +29,13 @@
 
 .header {
     position   : fixed;
+    top        : -10px;
     width      : 94%;
     font-family: 'Montserrat', sans-serif;
     padding    : 46px 3%;
 
     z-index: 10;
+
     .header__wrapper {
         width          : 100%;
         display        : flex;

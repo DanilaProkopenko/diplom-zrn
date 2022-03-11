@@ -1,1 +1,100 @@
-s
+.wrapper {
+    width: 100%;
+
+    .content {
+        width : 93%;
+        margin: 0 auto;
+    }
+}
+
+.portfolio {
+    margin: 250px auto 60px;
+
+
+    .portfolio__header {
+        font-family   : 'Montserrat';
+        font-style    : normal;
+        font-weight   : 700;
+        font-size     : 66px;
+        // line-height: 20px;
+    }
+
+    .portfolio__filter {
+        margin        : 43px 0 0;
+        font-family   : 'Montserrat';
+        font-style    : normal;
+        font-weight   : 400;
+        font-size     : 20px;
+        // line-height: 20px;
+
+        p {
+            display     : inline-block;
+            margin-right: 1em;
+        }
+
+        .portfolio__filter__category {
+
+            .portfolio__filter__category__ul {
+
+                .portfolio__filter__category__li {
+                    list-style: none;
+                    display   : inline-block;
+                    cursor    : pointer;
+
+                    &::after {
+                        content: " / ";
+                    }
+
+                    &:nth-last-child(-n+1)::after {
+                        content: "";
+                    }
+                }
+            }
+        }
+    }
+}
+
+.pr-works {
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
+    // width: 100%;
+    .pr-work__box {
+
+        &:nth-child(2n){
+            margin: 25px 0 25px 15px;
+
+        }
+        
+        &:nth-child(2n + 1){
+            margin: 25px 15px 0 0px;
+        }
+
+        .pr-work__thumb {
+            width          : 100%;
+            border-radius  : 10px;
+            overflow       : hidden;
+            text-align     : center;
+            justify-content: center;
+            display        : flex;
+
+            .pr-work__thumb__img {
+                width: 100%;
+            }
+        }
+
+        .pr-work__name {
+            margin: 25px 0 6px 0;
+            font-family: 'centurygothic_bold', sans-serif;
+            font-style : normal;
+            font-weight: 700;
+            font-size  : 20px;
+        }
+
+        .pr-work__category {
+            font-family: 'centurygothic', sans-serif;
+            font-style : normal;
+            font-weight: 400;
+            font-size  : 14px;
+        }
+    }
+}

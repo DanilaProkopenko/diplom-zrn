@@ -1,1 +1,94 @@
-/* No CSS *//*# sourceMappingURL=portfolio.css.map */
+.wrapper {
+  width: 100%;
+}
+
+.wrapper .content {
+  width: 93%;
+  margin: 0 auto;
+}
+
+.portfolio {
+  margin: 250px auto 60px;
+}
+
+.portfolio .portfolio__header {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 66px;
+}
+
+.portfolio .portfolio__filter {
+  margin: 43px 0 0;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.portfolio .portfolio__filter p {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.portfolio .portfolio__filter .portfolio__filter__category .portfolio__filter__category__ul .portfolio__filter__category__li {
+  list-style: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.portfolio .portfolio__filter .portfolio__filter__category .portfolio__filter__category__ul .portfolio__filter__category__li::after {
+  content: " / ";
+}
+
+.portfolio .portfolio__filter .portfolio__filter__category .portfolio__filter__category__ul .portfolio__filter__category__li:nth-last-child(-n+1)::after {
+  content: "";
+}
+
+.pr-works {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.pr-works .pr-work__box:nth-child(2n) {
+  margin: 25px 0 25px 15px;
+}
+
+.pr-works .pr-work__box:nth-child(2n + 1) {
+  margin: 25px 15px 0 0px;
+}
+
+.pr-works .pr-work__box .pr-work__thumb {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pr-works .pr-work__box .pr-work__thumb .pr-work__thumb__img {
+  width: 100%;
+}
+
+.pr-works .pr-work__box .pr-work__name {
+  margin: 25px 0 6px 0;
+  font-family: 'centurygothic_bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.pr-works .pr-work__box .pr-work__category {
+  font-family: 'centurygothic', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+}
+/*# sourceMappingURL=portfolio.css.map */
