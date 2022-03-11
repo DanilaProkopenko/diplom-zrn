@@ -66,4 +66,72 @@ ul li:after {
   font-size: 60px;
   color: #fff;
 }
+
+.order-form {
+  width: 100%;
+  padding: 250px 0;
+}
+
+.order-form .order-form__box {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.order-form .order-form__box .order-form__email {
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 150px;
+  font-weight: 600;
+  color: #3A3A3A;
+  border: none;
+  border-bottom: #3A3A3A 6px solid;
+  margin-bottom: 45px;
+}
+
+.order-form .order-form__box .order-form__email::-webkit-input-placeholder {
+  color: #3A3A3A;
+  font-size: 150px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.order-form .order-form__box .order-form__email:-ms-input-placeholder {
+  color: #3A3A3A;
+  font-size: 150px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.order-form .order-form__box .order-form__email::-ms-input-placeholder {
+  color: #3A3A3A;
+  font-size: 150px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.order-form .order-form__box .order-form__email::placeholder {
+  color: #3A3A3A;
+  font-size: 150px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.order-form .order-form__box .order-form__label {
+  font-family: 'centurygothic', sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #3A3A3A;
+}
+
+.order-form .order-form__box .order-form__submit {
+  background: url("../media/image/buttons/submit-form/arrow.svg");
+  width: 150px;
+  height: 150px;
+  background-size: 150px 150px;
+  background-color: transparent;
+  border: 0;
+  position: absolute;
+  right: 10px;
+}
 /*# sourceMappingURL=home.css.map */
