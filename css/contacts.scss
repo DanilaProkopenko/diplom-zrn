@@ -1,0 +1,86 @@
+.wrapper {
+    width: 100%;
+
+    .content {
+        width : 93%;
+        margin: 250px auto;
+
+        .message-box {
+
+            .message__header {
+                font-family: 'centurygothic_bold', sans-serif;
+                font-style : normal;
+                font-weight: 700;
+                font-size  : 40px;
+                margin     : 0 0 60px 0;
+            }
+
+            .message__about {
+                width      : 1000px;
+                font-family: 'centurygothic_bold', sans-serif;
+                font-style : normal;
+                font-weight: 700;
+                font-size  : 40px;
+                margin     : 0 0 130px 0;
+            }
+        }
+
+        .contact-form {
+
+            .contact-form__header {
+                font-family: 'centurygothic', sans-serif;
+                font-style : normal;
+                font-weight: 400;
+                font-size  : 40px;
+                color      : #3A3A3A;
+            }
+
+            .contact-form__input-box {
+                margin: 50px 0 0 0;
+                width : 500px;
+
+                .input-email,
+                .input-name,
+                .input-number-messanger,
+                .input-about {
+
+                    border       : none;
+                    border-bottom: #ACACAC solid 1px;
+                }
+
+                .input-email,
+                .input-name,
+                .input-number-messanger,
+                .input-about,
+                ::placeholder {
+                    font-family: 'centurygothic';
+                    font-style : normal;
+                    font-weight: 400;
+                    font-size  : 30px;
+
+                    color: #ACACAC;
+                }
+
+                .input-email {}
+
+                .input-name {}
+
+                .input-number-messanger {}
+
+                .input-about {}
+
+                .submit-btn {
+                    border          : none;
+                    background-color: transparent;
+                    font-family     : 'centurygothic';
+                    font-style      : normal;
+                    font-weight     : 400;
+                    font-size       : 30px;
+                    color           : #3A3A3A;
+
+                    .submit-img {}
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,105 @@
+.wrapper {
+  width: 100%;
+}
+
+.wrapper .content {
+  width: 93%;
+  margin: 250px auto;
+}
+
+.wrapper .content .message-box .message__header {
+  font-family: 'centurygothic_bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  margin: 0 0 60px 0;
+}
+
+.wrapper .content .message-box .message__about {
+  width: 1000px;
+  font-family: 'centurygothic_bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  margin: 0 0 130px 0;
+}
+
+.wrapper .content .contact-form .contact-form__header {
+  font-family: 'centurygothic', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  color: #3A3A3A;
+}
+
+.wrapper .content .contact-form .contact-form__input-box {
+  margin: 50px 0 0 0;
+  width: 500px;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .input-email,
+.wrapper .content .contact-form .contact-form__input-box .input-name,
+.wrapper .content .contact-form .contact-form__input-box .input-number-messanger,
+.wrapper .content .contact-form .contact-form__input-box .input-about {
+  border: none;
+  border-bottom: #ACACAC solid 1px;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .input-email,
+.wrapper .content .contact-form .contact-form__input-box .input-name,
+.wrapper .content .contact-form .contact-form__input-box .input-number-messanger,
+.wrapper .content .contact-form .contact-form__input-box .input-about,
+.wrapper .content .contact-form .contact-form__input-box ::-webkit-input-placeholder {
+  font-family: 'centurygothic';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  color: #ACACAC;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .input-email,
+.wrapper .content .contact-form .contact-form__input-box .input-name,
+.wrapper .content .contact-form .contact-form__input-box .input-number-messanger,
+.wrapper .content .contact-form .contact-form__input-box .input-about,
+.wrapper .content .contact-form .contact-form__input-box :-ms-input-placeholder {
+  font-family: 'centurygothic';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  color: #ACACAC;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .input-email,
+.wrapper .content .contact-form .contact-form__input-box .input-name,
+.wrapper .content .contact-form .contact-form__input-box .input-number-messanger,
+.wrapper .content .contact-form .contact-form__input-box .input-about,
+.wrapper .content .contact-form .contact-form__input-box ::-ms-input-placeholder {
+  font-family: 'centurygothic';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  color: #ACACAC;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .input-email,
+.wrapper .content .contact-form .contact-form__input-box .input-name,
+.wrapper .content .contact-form .contact-form__input-box .input-number-messanger,
+.wrapper .content .contact-form .contact-form__input-box .input-about,
+.wrapper .content .contact-form .contact-form__input-box ::placeholder {
+  font-family: 'centurygothic';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  color: #ACACAC;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .submit-btn {
+  border: none;
+  background-color: transparent;
+  font-family: 'centurygothic';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  color: #3A3A3A;
+}
+/*# sourceMappingURL=contacts.css.map */
