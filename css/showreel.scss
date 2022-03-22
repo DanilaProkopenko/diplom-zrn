@@ -1,0 +1,40 @@
+.wrapper {
+    width: 100%;
+
+    .content {
+        width     : 93%;
+        margin: 0 auto;
+        margin-top: 250px;
+
+        .showreel-header {
+            font-family: 'Montserrat', sans-serif;
+            font-style : normal;
+            font-weight: 700;
+            font-size  : 66px;
+            color      : #000;
+        }
+
+        .showreel-comment {
+            font-family: 'centurygothic', sans-serif;
+            font-style : normal;
+            font-weight: 400;
+            font-size  : 50px;
+            line-height: 61px;
+            color      : #000;
+
+            margin-top: 60px;
+        }
+
+
+        .video-box{
+            background-color: #C4C4C4;
+            width: 1400px;
+            height: 800px;
+            margin: 130px auto;
+            .video-video{
+                width: 100%;
+                height: 100%;
+            }   
+        }
+    }
+}

@@ -26,6 +26,7 @@
         }
 
         .contact-form {
+            width: 700px;
 
             .contact-form__header {
                 font-family: 'centurygothic', sans-serif;
@@ -37,7 +38,7 @@
 
             .contact-form__input-box {
                 margin: 50px 0 0 0;
-                width : 500px;
+                // width : 500px;
 
                 .input-email,
                 .input-name,
@@ -46,6 +47,8 @@
 
                     border       : none;
                     border-bottom: #ACACAC solid 1px;
+                    margin-bottom: 45px;
+                    padding-bottom: 5px;
                 }
 
                 .input-email,
@@ -61,13 +64,22 @@
                     color: #ACACAC;
                 }
 
-                .input-email {}
+                .input-email {
+                    width: 100%;
+                }
 
-                .input-name {}
+                .input-name {
+                    width: 48%;
+                    margin-right: 17px;
+                }
 
-                .input-number-messanger {}
+                .input-number-messanger {
+                    width: 49%;
+                }
 
-                .input-about {}
+                .input-about {
+                    width: 100%;
+                }
 
                 .submit-btn {
                     border          : none;
@@ -77,7 +89,7 @@
                     font-weight     : 400;
                     font-size       : 30px;
                     color           : #3A3A3A;
-
+                    cursor: pointer;
                     .submit-img {}
                 }
             }
