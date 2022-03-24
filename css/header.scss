@@ -98,11 +98,9 @@
     }
 
 }
-.active{
-    display: block;
-}
+
 .screen-menu__box {
-    display: none;
+    // display: none;
     position        : fixed;
     top             : 0;
     left            : 0;
@@ -112,6 +110,10 @@
     padding: 5%;
     z-index: 11;
 
+    transform: translateY(100%);
+
+    // transition: transform cubic-bezier(0, 0, 1, 1) 2s ;
+    transition: transform 1.5s ;
     .screen-menu {
         width           : 100vh;
         height          : 100vh;
@@ -174,4 +176,10 @@
             width: 300px;
         }
     }
+}
+
+.active{
+    display: block;
+    transform: translateY(0);
+
 }

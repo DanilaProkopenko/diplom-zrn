@@ -59,7 +59,7 @@
 
         <div class="screen-menu__box" id="screen-menu__box">
             <div class="screen-menu">
-                <div class="screen-menu__menu-btn" id="menu-btn">
+                <div class="screen-menu__menu-btn" id="menu-btn-close">
                     <img src="./media/image/buttons/menu-btn-close.svg" alt="menu"
                         class="screen-menu__menu-close-btn__img">
                 </div>
@@ -106,11 +106,16 @@
 
     <script>
         let menuBtnOpen = document.getElementById('menu-btn-open');
+        let menuBtnClose = document.getElementById('menu-btn-close');
+        let screenMenuBox = document.getElementById('screen-menu__box');
         document.addEventListener('DOMContentLoaded', function () {
-            menuBtn.onclick = function(){
-                document.getElementById('screen-menu__box').classList.toggle('active');
+            menuBtnOpen.onclick = function(){
+                screenMenuBox.classList.add('active');
 
                 // alert('click');
+            }
+            menuBtnClose.onclick = function(){
+                screenMenuBox.classList.remove('active');
             }
          });
 

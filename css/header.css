@@ -101,12 +101,7 @@
   display: inline-block;
 }
 
-.active {
-  display: block;
-}
-
 .screen-menu__box {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -115,6 +110,12 @@
   background-color: #000;
   padding: 5%;
   z-index: 11;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: -webkit-transform 1.5s;
+  transition: -webkit-transform 1.5s;
+  transition: transform 1.5s;
+  transition: transform 1.5s, -webkit-transform 1.5s;
 }
 
 .screen-menu__box .screen-menu {
@@ -173,5 +174,11 @@
   font-size: 20px;
   color: #6B6B6B;
   width: 300px;
+}
+
+.active {
+  display: block;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 /*# sourceMappingURL=header.css.map */
