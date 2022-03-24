@@ -23,7 +23,7 @@ ul li:after {
   right: 3%;
   left: auto;
   top: 40%;
-  z-index: 10;
+  z-index: 9;
 }
 
 .wrapper .content .slide-detect .slide-detect__ul .slide-detect__li {

@@ -98,7 +98,80 @@
     }
 
 }
+.active{
+    display: block;
+}
+.screen-menu__box {
+    display: none;
+    position        : fixed;
+    top             : 0;
+    left            : 0;
+    width           : 100%;
+    height          : 100%;
+    background-color: #000;
+    padding: 5%;
+    z-index: 11;
 
-.screen-menu{
-    
+    .screen-menu {
+        width           : 100vh;
+        height          : 100vh;
+        background-color: #000;
+
+        .screen-menu__menu-btn{
+            cursor: pointer;
+            .screen-menu__menu-close-btn__img{
+                margin-bottom: 20px;
+            }
+        }
+        .screen-menuа__ul {
+
+            .screen-menu__li {
+                font-family: 'Montserrat';
+                font-style : normal;
+                font-weight: 700;
+                font-size  : 60px;
+
+                list-style: none;
+                color     : #fff;
+
+                margin-bottom: 55px;
+
+                .screen-menu__links {
+                    text-decoration: none;
+                    color          : #fff;
+
+
+                    .screen-menu__links__upper-text {
+                        font-family: 'Montserrat';
+                        font-style : normal;
+                        font-weight: 700;
+                        font-size  : 24px;
+                    }
+                    &:hover {
+                        color: #FF003D;
+                    }
+                }
+            }
+        }
+    }
+
+    .screen-menu__address {
+        .screen-menu__address__header {
+            font-family: 'Montserrat';
+            font-style : normal;
+            font-weight: 600;
+            font-size  : 20px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .screen-menu__address__text {
+            font-family: 'Montserrat';
+            font-style : normal;
+            font-weight: 400;
+            font-size  : 20px;
+            color: #6B6B6B;
+            width: 300px;
+        }
+    }
 }
