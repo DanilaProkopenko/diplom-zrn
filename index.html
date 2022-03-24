@@ -103,25 +103,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        let menuBtnOpen = document.getElementById('menu-btn-open');
-        let menuBtnClose = document.getElementById('menu-btn-close');
-        let screenMenuBox = document.getElementById('screen-menu__box');
-        document.addEventListener('DOMContentLoaded', function () {
-            menuBtnOpen.onclick = function(){
-                screenMenuBox.classList.add('active');
-
-                // alert('click');
-            }
-            menuBtnClose.onclick = function(){
-                screenMenuBox.classList.remove('active');
-            }
-         });
-
-
-
-    </script>
     <div class="wrapper">
         <div class="content">
             <div class="slide-detect">
@@ -215,9 +196,9 @@
                 </div>
             </div>
         </div>
-
-
     </div>
+
+    <script src="./js/screen-menu.js"></script>
 </body>
 
 </html>
