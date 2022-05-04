@@ -57,8 +57,8 @@
             align-items: flex-end;
 
             .header-ul {
-                display: inline-block;
-                margin : 0 80px 0 auto;
+
+                margin: 0 80px 0 auto;
 
                 .header-li {
                     list-style : none;
@@ -107,24 +107,27 @@
     width           : 100%;
     height          : 100%;
     background-color: #000;
-    padding: 2% 5%;
-    z-index: 11;
+    padding         : 2% 5%;
+    z-index         : 11;
 
     transform: translateY(100%);
 
     // transition: transform cubic-bezier(0, 0, 1, 1) 2s ;
-    transition: transform 1.5s ;
+    transition: transform 1.5s;
+
     .screen-menu {
         width           : 100vh;
         height          : 100vh;
         background-color: #000;
 
-        .screen-menu__menu-btn{
+        .screen-menu__menu-btn {
             cursor: pointer;
-            .screen-menu__menu-close-btn__img{
+
+            .screen-menu__menu-close-btn__img {
                 margin-bottom: 20px;
             }
         }
+
         .screen-menuа__ul {
 
             .screen-menu__li {
@@ -149,6 +152,7 @@
                         font-weight: 700;
                         font-size  : 24px;
                     }
+
                     &:hover {
                         color: #FF003D;
                     }
@@ -159,11 +163,11 @@
 
     .screen-menu__address {
         .screen-menu__address__header {
-            font-family: 'Montserrat';
-            font-style : normal;
-            font-weight: 600;
-            font-size  : 20px;
-            color: #fff;
+            font-family  : 'Montserrat';
+            font-style   : normal;
+            font-weight  : 600;
+            font-size    : 20px;
+            color        : #fff;
             margin-bottom: 8px;
         }
 
@@ -172,14 +176,27 @@
             font-style : normal;
             font-weight: 400;
             font-size  : 20px;
-            color: #6B6B6B;
-            width: 300px;
+            color      : #6B6B6B;
+            width      : 300px;
         }
     }
 }
 
-.active{
-    display: block;
+.active {
+    display  : block;
     transform: translateY(0);
 
+}
+
+@media screen and (min-width:1024px) {
+    .header-ul {
+        display: inline-block;
+    }
+
+}
+
+@media screen and (min-width:320px) and(max-width:1024px) {
+    .header-ul {
+        display: none;
+    }
 }
