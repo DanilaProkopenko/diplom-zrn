@@ -42,15 +42,9 @@
         justify-content: space-between;
 
         .logo {
-            width  : 137px;
-            height : 61px;
             display: inline-block;
-
-            .img-logo {
-                width : 137px;
-                height: 61px;
-            }
         }
+
 
         .header__end {
             display    : flex;
@@ -193,10 +187,22 @@
         display: inline-block;
     }
 
+
+    .logo,
+    .img-logo {
+        width : 137px;
+        height: 61px;
+    }
 }
 
 @media screen and (min-width:320px) and(max-width:1024px) {
     .header-ul {
         display: none;
+    }
+    
+    .logo,
+    .img-logo {
+        width : 89px;
+        height: 61px;
     }
 }

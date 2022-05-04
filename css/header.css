@@ -43,14 +43,7 @@
 }
 
 .header .header__wrapper .logo {
-  width: 137px;
-  height: 61px;
   display: inline-block;
-}
-
-.header .header__wrapper .logo .img-logo {
-  width: 137px;
-  height: 61px;
 }
 
 .header .header__wrapper .header__end {
@@ -185,11 +178,21 @@
   .header-ul {
     display: inline-block;
   }
+  .logo,
+  .img-logo {
+    width: 137px;
+    height: 61px;
+  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 1024px) {
   .header-ul {
     display: none;
+  }
+  .logo,
+  .img-logo {
+    width: 89px;
+    height: 61px;
   }
 }
 /*# sourceMappingURL=header.css.map */

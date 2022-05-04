@@ -37,35 +37,6 @@ ul li:after {
   content: url("../media/image/buttons/slide-detect/white-oval.svg");
 }
 
-.wrapper .content .works {
-  width: 100%;
-  z-index: 1;
-}
-
-.wrapper .content .works .work__box {
-  width: 100%;
-  position: relative;
-  margin-bottom: -5px;
-}
-
-.wrapper .content .works .work__box .work__thumb {
-  width: 100%;
-}
-
-.wrapper .content .works .work__box .work__thumb .work__thumb__img {
-  width: 100%;
-}
-
-.wrapper .content .works .work__box .work__name {
-  position: absolute;
-  bottom: 50px;
-  left: 3%;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 60px;
-  color: #fff;
-}
-
 .order-form {
   width: 100%;
   padding: 250px 0;
@@ -169,6 +140,30 @@ ul li:after {
   .slide-detect {
     position: fixed;
   }
+  .works {
+    width: 100%;
+    z-index: 1;
+  }
+  .works .work__box {
+    width: 100%;
+    position: relative;
+    margin-bottom: -5px;
+  }
+  .works .work__box .work__thumb {
+    width: 100%;
+  }
+  .works .work__box .work__thumb .work__thumb__img {
+    width: 100%;
+  }
+  .works .work__box .work__name {
+    position: absolute;
+    bottom: 50px;
+    left: 3%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 60px;
+    color: #fff;
+  }
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1548px) {
@@ -223,6 +218,34 @@ ul li:after {
   .order-form .order-form__email,
   .order-form .order-form__email::placeholder {
     font-size: 14px;
+  }
+  .works {
+    width: 100%;
+    margin-top: 130px;
+    z-index: 1;
+  }
+  .works .work__box {
+    width: 90%;
+    position: relative;
+    margin: 0 auto 35px;
+    margin-bottom: 35px;
+  }
+  .works .work__box .work__thumb {
+    width: 100%;
+    border-radius: 10px;
+  }
+  .works .work__box .work__thumb .work__thumb__img {
+    border-radius: 10px;
+    width: 100%;
+  }
+  .works .work__box .work__name {
+    position: absolute;
+    bottom: 20px;
+    left: 3%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    color: #fff;
   }
 }
 /*# sourceMappingURL=home.css.map */
