@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.content {
+  width: 100%;
+}
+
 .content .work .work__data__box {
   font-family: "centurygothic";
   font-style: normal;
@@ -23,66 +27,68 @@
   text-transform: uppercase;
 }
 
-.content .work .work__discription {
+.content .work .work__discription-text {
   font-family: "centurygothic";
   font-style: normal;
   font-weight: 400;
 }
 
+.content .work .work__discription__img-box {
+  margin: 5px 0;
+}
+
+.content .work .work__discription__img-box:first-child {
+  margin-top: 30px;
+}
+
 @media screen and (min-width: 1024px) {
-  .content {
+  .work {
     width: 100%;
   }
-  .content .work {
+  .work .work__header__img-box,
+  .work .work__header__img {
     width: 100%;
   }
-  .content .work .work__header__img-box,
-  .content .work .work__header__img {
-    width: 100%;
-  }
-  .content .work .work__data__box {
+  .work .work__data__box {
     font-size: 20px;
     margin: 40px 5% 55px;
   }
-  .content .work .work__header__text {
+  .work .work__header__text {
     font-size: 50px;
     margin: 0 5% 30px;
   }
-  .content .work .work__discription {
+  .work .work__discription-text {
     margin: 0 5% 30px;
     font-size: 30px;
   }
-  .content .work .work__discription .work__discription__img-box,
-  .content .work .work__discription .work__discription__img {
+  .work .work__discription__img-box,
+  .work .work__discription__img {
     width: 100%;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 1024px) {
-  .content {
+  .work {
     width: 100%;
   }
-  .content .work {
+  .work .work__header__img-box,
+  .work .work__header__img {
     width: 100%;
   }
-  .content .work .work__header__img-box,
-  .content .work .work__header__img {
-    width: 100%;
-  }
-  .content .work .work__data__box {
+  .work .work__data__box {
     font-size: 14px;
     margin: 10px 5%;
   }
-  .content .work .work__header__text {
+  .work .work__header__text {
     font-size: 25px;
     margin: 0 5% 15px;
   }
-  .content .work .work__discription {
+  .work .work__discription-text {
     margin: 0 5% 35px;
     font-size: 16px;
   }
-  .content .work .work__discription .work__discription__img-box,
-  .content .work .work__discription .work__discription__img {
+  .work .work__discription__img-box,
+  .work .work__discription__img {
     width: 100%;
   }
 }
