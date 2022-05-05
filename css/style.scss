@@ -223,68 +223,34 @@ ul li:after {
 }
 
 
-.wrapper {
-    width: 100%;
-
-    .content {
-        width: 100%;
-
-        .slide-detect {
-            right: 3%;
-            left : auto;
-            top  : 40%;
-
-            z-index: 9;
-
-            .slide-detect__ul {
 
 
-                .slide-detect__li {
-                    list-style   : none;
-                    margin-bottom: 25px;
+.slide-detect {
+    right: 3%;
+    left : auto;
+    top  : 40%;
 
-                    &::after {
-                        display: block;
-                        width  : 20px;
-                        height : 20px;
-                        content: url('../media/image/buttons/slide-detect/white-oval.svg');
-                    }
-                }
+    z-index: 9;
+
+    .slide-detect__ul {
+
+
+        .slide-detect__li {
+            list-style   : none;
+            margin-bottom: 25px;
+
+            &::after {
+                display: block;
+                width  : 20px;
+                height : 20px;
+                content: url('../media/image/buttons/slide-detect/white-oval.svg');
             }
         }
-
-        // .works {
-        //     width  : 100%;
-        //     z-index: 1;
-
-        //     .work__box {
-        //         width        : 100%;
-        //         position     : relative;
-        //         margin-bottom: -5px;
-
-        //         .work__thumb {
-        //             width: 100%;
-
-        //             .work__thumb__img {
-        //                 width: 100%;
-        //             }
-        //         }
-
-        //         .work__name {
-        //             position   : absolute;
-        //             // top: 20px;
-        //             bottom     : 50px;
-        //             left       : 3%;
-        //             font-family: 'Montserrat', sans-serif;
-        //             font-weight: 600;
-        //             font-size  : 60px;
-        //             color      : #fff;
-        //         }
-        //     }
-        // }
     }
 }
 
+
+// _________________________________ФОРМА ОБРАТНОЙ СВЯЗИ
 .order-form {
     width  : 100%;
     padding: 250px 0;
@@ -472,57 +438,54 @@ ul li:after {
     }
 }
 
-.content {
-    width: 100%;
+// _______________________________ОДИНОЧНАЯ СТРАНИЦА РАБОТЫ
+.work {
 
-    .work {
+    .work__header__img-box {
 
-        .work__header__img-box {
-
+        // width: 100%;
+        .work__header_img {
             // width: 100%;
-            .work__header_img {
-                // width: 100%;
-
-            }
-        }
-
-        .work__data__box {
-            font-family: "centurygothic";
-            font-style : normal;
-            font-weight: 400;
-
-            .work__data__category {
-                display: inline-block;
-            }
-
-            .work__data {
-                display: inline-block;
-            }
-        }
-
-        .work__header__text {
-            font-family   : "centurygothic_bold", sans-serif;
-            font-style    : normal;
-            font-weight   : 700;
-            text-transform: uppercase;
-        }
-
-        .work__discription-text {
-            font-family: "centurygothic";
-            font-style : normal;
-            font-weight: 400;
 
         }
+    }
 
-        .work__discription__img-box {
-            margin: 5px 0;
+    .work__data__box {
+        font-family: "centurygothic";
+        font-style : normal;
+        font-weight: 400;
 
-            &:first-child {
-                margin-top: 30px;
-            }
-
-            .work__discription__img {}
+        .work__data__category {
+            display: inline-block;
         }
+
+        .work__data {
+            display: inline-block;
+        }
+    }
+
+    .work__header__text {
+        font-family   : "centurygothic_bold", sans-serif;
+        font-style    : normal;
+        font-weight   : 700;
+        text-transform: uppercase;
+    }
+
+    .work__discription-text {
+        font-family: "centurygothic";
+        font-style : normal;
+        font-weight: 400;
+
+    }
+
+    .work__discription__img-box {
+        margin: 5px 0;
+
+        &:first-child {
+            margin-top: 30px;
+        }
+
+        .work__discription__img {}
     }
 }
 
@@ -594,7 +557,7 @@ ul li:after {
 
 
 
-
+// ___________________________________________ПОРТФОЛИО
 .portfolio-wr {
     width : 93%;
     margin: 0 auto;
@@ -833,6 +796,7 @@ ul li:after {
     }
 }
 
+// __________________________________________________SHOWREEL
 .showreel-wr {
     width: 93%;
 }
@@ -929,7 +893,8 @@ ul li:after {
         .footer__upper-line {
             display        : flex;
             justify-content: space-around;
-            align-items: flex-end;
+            align-items    : flex-end;
+
             .footer-ul {
 
                 .footer-li {
@@ -937,13 +902,13 @@ ul li:after {
                     list-style: none;
 
                     .footer-links {
-                        font-family: 'centurygothic_bold', sans-serif;
-                        font-size  : 30px;
-                        font-weight: 600;
+                        font-family    : 'centurygothic_bold', sans-serif;
+                        font-size      : 30px;
+                        font-weight    : 600;
                         text-decoration: none;
                         color          : #fff;
 
-                        &:hover{
+                        &:hover {
                             color: #FF003D;
                         }
                     }
@@ -951,33 +916,34 @@ ul li:after {
             }
 
             .address {
-                color      : #8D8D8D;
-                font-size  : 20px;
-                font-family: 'centurygothic_bold', sans-serif;
-                font-weight: 600;
+                color        : #8D8D8D;
+                font-size    : 20px;
+                font-family  : 'centurygothic_bold', sans-serif;
+                font-weight  : 600;
                 margin-bottom: 20px;
 
-                p{
+                p {
                     margin-bottom: 10px;
                 }
             }
         }
 
         .footer__line {
-            width: 94%;
-            height: 5px;
-            margin:  50px auto 0;
+            width           : 94%;
+            height          : 5px;
+            margin          : 50px auto 0;
             background-color: #4E4E4E;
         }
 
         .footer__under-line {
-            margin: 0 3%;
-            padding: 28px 0;
-            display: flex;
+            margin         : 0 3%;
+            padding        : 28px 0;
+            display        : flex;
             justify-content: space-between;
-            font-family: 'centurygothic_bold', sans-serif;
-            font-weight: 600;
-            color: #fff;
+            font-family    : 'centurygothic_bold', sans-serif;
+            font-weight    : 600;
+            color          : #fff;
+
             .year {}
 
             .right {}
