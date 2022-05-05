@@ -1,68 +1,64 @@
-.wrapper {
-  width: 100%;
-}
-
-.wrapper .content {
+.showreel-wr {
   width: 93%;
 }
 
-.wrapper .content .showreel-header {
+.showreel-header {
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 700;
   color: #000;
 }
 
-.wrapper .content .showreel-comment {
+.showreel-comment {
   font-family: 'centurygothic', sans-serif;
   font-style: normal;
   font-weight: 400;
   color: #000;
 }
 
-.wrapper .content .video-box {
+.video-box {
   background-color: #C4C4C4;
 }
 
 @media screen and (min-width: 1024px) {
-  .content {
+  .showreel-wr {
     margin: 250px auto 0 auto;
   }
-  .content .showreel-header {
+  .showreel-wr .showreel-header {
     font-size: 66px;
   }
-  .content .showreel-comment {
+  .showreel-wr .showreel-comment {
     line-height: 61px;
     margin-top: 60px;
     font-size: 50px;
   }
-  .content .video-box,
-  .content .video-video {
+  .showreel-wr .video-box,
+  .showreel-wr .video-video {
     width: 100%;
     height: 800px;
   }
-  .content .video-box {
+  .showreel-wr .video-box {
     margin: 130px auto;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 1024px) {
-  .content {
+  .showreel-wr {
     margin: 120px auto 0 auto;
   }
-  .content .showreel-header {
+  .showreel-wr .showreel-header {
     font-size: 46px;
   }
-  .content .showreel-comment {
+  .showreel-wr .showreel-comment {
     font-size: 16px;
     margin-top: 10px;
   }
-  .content .video-box,
-  .content .video-video {
+  .showreel-wr .video-box,
+  .showreel-wr .video-video {
     width: 100%;
     height: 230px;
   }
-  .content .video-box {
+  .showreel-wr .video-box {
     margin: 60px auto;
   }
 }
