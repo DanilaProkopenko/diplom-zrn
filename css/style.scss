@@ -33,7 +33,6 @@
     top        : -10px;
     width      : 94%;
     font-family: 'Montserrat', sans-serif;
-    padding    : 46px 3%;
 
     z-index: 10;
 
@@ -184,6 +183,13 @@
 }
 
 @media screen and (min-width:1024px) {
+
+    .header {
+        top    : -10px;
+        padding: 46px 3%;
+
+    }
+
     .header-ul {
         display: inline-block;
     }
@@ -197,6 +203,12 @@
 }
 
 @media screen and (min-width:320px) and(max-width:1024px) {
+    .header {
+        top    : 0px;
+        padding: 10px 3%;
+
+    }
+
     .header-ul {
         display: none;
     }
@@ -441,7 +453,7 @@ ul li:after {
 
     .works {
         width     : 100%;
-        margin-top: 130px;
+        margin-top: 100px;
         z-index   : 1;
 
         .work__box {
@@ -1040,6 +1052,7 @@ ul li:after {
                 // align-items    : flex-end;
 
                 margin: 0 0 0 20px;
+
                 .footer-ul {
 
                     .footer-li {
@@ -1072,6 +1085,230 @@ ul li:after {
                 display        : flex;
                 justify-content: space-between;
 
+            }
+        }
+    }
+}
+
+
+// ______________________________СТРАНИЦА КОНТАКТЫ
+
+.contact-wr {
+    width: 93%;
+
+    .message-box {
+
+        .message__header {
+            font-family: 'centurygothic_bold', sans-serif;
+            font-style : normal;
+            font-weight: 700;
+        }
+
+        .message__about {
+            font-family: 'centurygothic_bold', sans-serif;
+            font-style : normal;
+            font-weight: 700;
+
+        }
+    }
+
+    .contact-form {
+
+        .contact-form__header {
+            font-family: 'centurygothic', sans-serif;
+            font-style : normal;
+            font-weight: 400;
+            color      : #3A3A3A;
+        }
+
+        .contact-form__input-box {
+            // width : 500px;
+
+            .input-email,
+            .input-name,
+            .input-number-messanger,
+            .input-about {
+                border       : none;
+                border-bottom: #ACACAC solid 1px;
+
+            }
+
+            .input-email,
+            .input-name,
+            .input-number-messanger,
+            .input-about,
+            ::placeholder {
+                font-family: 'centurygothic';
+                font-style : normal;
+                font-weight: 400;
+                color      : #ACACAC;
+            }
+
+
+
+            .submit-btn {
+                border          : none;
+                background-color: transparent;
+                font-family     : 'centurygothic';
+                font-style      : normal;
+                font-weight     : 400;
+                color           : #3A3A3A;
+                cursor          : pointer;
+
+                .submit-img {}
+            }
+        }
+    }
+}
+
+@media screen and(min-width:1024px) {
+    .contact-wr {
+        margin: 250px auto;
+    }
+
+    .message__about {
+        width: 1000px;
+    }
+
+    .message-box {
+
+        .message__header {
+            font-size: 40px;
+            margin   : 0 0 60px 0;
+        }
+
+        .message__about {
+            font-size: 40px;
+            margin   : 0 0 130px 0;
+        }
+    }
+
+    .contact-form {
+        width: 700px;
+
+        .contact-form__header {
+            font-size: 40px;
+        }
+
+        .contact-form__input-box {
+            margin: 50px 0 0 0;
+
+            .input-email,
+            .input-name,
+            .input-number-messanger,
+            .input-about {
+                margin-bottom : 45px;
+                padding-bottom: 5px;
+            }
+
+            .input-email,
+            .input-name,
+            .input-number-messanger,
+            .input-about,
+            ::placeholder {
+                font-size: 30px;
+            }
+
+            .input-email {
+                width: 100%;
+            }
+
+            .input-name {
+                width       : 48%;
+                margin-right: 17px;
+            }
+
+            .input-number-messanger {
+                width: 49%;
+            }
+
+            .input-about {
+                width: 100%;
+            }
+
+            .submit-btn {
+                font-size: 30px;
+
+            }
+        }
+    }
+}
+
+// @media screen and(min-width:1025px) and (max-width:1548px) {}
+
+@media screen and (min-width:320px) and(max-width:1024px) {
+    .contact-wr {
+        margin: 120px auto;
+    }
+
+    .message__about {
+        // width: 1000px;
+    }
+
+    .message-box {
+
+        .message__header {
+            font-size: 30px;
+            margin   : 0 0 40px 0;
+        }
+
+        .message__about {
+            font-size: 30px;
+            margin   : 0 0 90px 0;
+        }
+    }
+
+    .contact-form {
+        // width: 700px;
+
+        .contact-form__header {
+            font-size: 25px;
+        }
+
+        .contact-form__input-box {
+            margin: 50px 0 0 0;
+
+            .input-email,
+            .input-name,
+            .input-number-messanger,
+            .input-about {
+                margin-bottom : 45px;
+                padding-bottom: 5px;
+            }
+
+            .input-email,
+            .input-name,
+            .input-number-messanger,
+            .input-about,
+            ::placeholder {
+                font-size: 25px;
+            }
+
+            .input-email {
+                width: 100%;
+            }
+
+            .input-name {
+                width          : 100%;
+                // width       : 48%;
+                margin-right   : 17px;
+            }
+
+            .input-number-messanger {
+                // width: 49%;
+                width: 100%;
+            }
+
+            .input-about {
+                width: 100%;
+            }
+
+            .submit-btn {
+                font-size: 25px;
+
+                .submit-img {
+                    width: 15%;
+                }
             }
         }
     }
