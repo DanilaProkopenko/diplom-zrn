@@ -252,8 +252,7 @@ ul li:after {
 
 // _________________________________ФОРМА ОБРАТНОЙ СВЯЗИ
 .order-form {
-    width  : 100%;
-    padding: 250px 0;
+    width: 100%;
 
     .order-form__box {
         position: relative;
@@ -268,7 +267,6 @@ ul li:after {
             color           : #3A3A3A;
             border          : none;
             border-bottom   : #3A3A3A 6px solid;
-            margin-bottom   : 45px;
             // margin: 0 20%;
 
             &::placeholder {
@@ -281,21 +279,19 @@ ul li:after {
 
         .order-form__label {
             font-family: 'centurygothic', sans-serif;
-            font-size  : 30px;
             font-weight: 400;
             color      : #3A3A3A;
 
         }
 
         .order-form__submit {
-            background         : url('../media/image/buttons/submit-form/arrow.svg');
+            // background         : url('../media/image/buttons/submit-form/arrow.svg');
             // width           : 150px;
             // height          : 150px;
-            background-size    : 150px 150px;
-            background-color   : transparent;
-            border             : 0;
-            position           : absolute;
-            right              : 10px;
+            // background-size    : 150px 150px;
+            background-color: transparent;
+            border          : 0;
+            position        : absolute;
         }
     }
 }
@@ -303,28 +299,33 @@ ul li:after {
 @media screen and(min-width:1548px) {
 
     .order-form {
+        padding: 250px 0;
 
         .order-form__submit {
-            background      : url('../media/image/buttons/submit-form/arrow.svg');
-            width           : 150px;
-            height          : 150px;
-            background-size : 150px 150px;
-            background-color: transparent;
-            border          : 0;
-            position        : absolute;
-            right           : 10px;
+            background     : url('../media/image/buttons/submit-form/arrow.svg');
+            width          : 150px;
+            height         : 150px;
+            background-size: 150px 150px;
+            border         : 0;
+            right          : 10px;
+            top            : 15px;
         }
 
         .order-form__email {
-            font-size  : 150px;
-            font-weight: 600;
-            color      : #fff;
+            font-size    : 150px;
+            font-weight  : 600;
+            color        : #fff;
+            margin-bottom: 45px;
 
             &::placeholder {
                 font-size     : 150px;
                 text-transform: uppercase;
                 margin-bottom : 10px;
             }
+        }
+
+        .order-form__label {
+            font-size: 30px;
         }
     }
 }
@@ -367,19 +368,42 @@ ul li:after {
 
 @media screen and(min-width:1025px) and (max-width:1548px) {
     .order-form {
+        padding: 250px 0;
+
         .order-form__submit {
-            // background      : url('../media/image/buttons/submit-form/arrow.svg');
+            background     : url('../media/image/buttons/submit-form/arrow-mini.svg');
             width          : 100px;
             height         : 100px;
             background-size: 100px 100px;
             border         : 0;
             right          : 10px;
+            top            : 5px;
+        }
+
+        .order-form__email {
+            margin-bottom: 45px;
         }
 
         .order-form__email,
         .order-form__email::placeholder {
             font-size: 90px;
         }
+
+        .order-form__label {
+            font-size: 30px;
+        }
+    }
+}
+
+@media screen and (min-width:360px) and(max-width:1024px) {
+    .order-form__submit {
+        background     : url('../media/image/buttons/submit-form/arrow-mini.svg');
+        width          : 35px;
+        height         : 35px;
+        background-size: 35px 35px;
+        border         : 0;
+        right          : 5px;
+        top            : 3px;
     }
 }
 
@@ -389,17 +413,28 @@ ul li:after {
     }
 
     .order-form {
-        .order-form__submit {
-            // background      : url('../media/image/buttons/submit-form/arrow.svg');
-            width          : 100px;
-            height         : 100px;
-            background-size: 100px 100px;
-            border         : 0;
-            right          : 10px;
+        padding: 100px 0;
+
+        // .order-form__submit {
+        //     background     : url('../media/image/buttons/submit-form/arrow-mini.svg');
+        //     width          : 35px;
+        //     height         : 35px;
+        //     background-size: 35px 35px;
+        //     border         : 0;
+        //     right          : 5px;
+        //     top            : 3px;
+        // }
+
+        .order-form__email {
+            margin-bottom: 7px;
         }
 
         .order-form__email,
         .order-form__email::placeholder {
+            font-size: 35px;
+        }
+
+        .order-form__label {
             font-size: 14px;
         }
     }
@@ -437,6 +472,19 @@ ul li:after {
         }
     }
 }
+
+@media screen and (min-width:320px) and (max-width:360px) {
+    .order-form__submit {
+        background     : url('../media/image/buttons/submit-form/arrow-mini.svg');
+        width          : 35px;
+        height         : 35px;
+        background-size: 35px 35px;
+        border         : 0;
+        right          : 0px;
+        top            : 85px;
+    }
+}
+
 
 // _______________________________ОДИНОЧНАЯ СТРАНИЦА РАБОТЫ
 .work {
