@@ -586,7 +586,8 @@ ul li:after {
   }
   .work .work__header__img-box,
   .work .work__header__img {
-    width: 100%;
+    width: 100vw;
+    height: 100%;
   }
   .work .work__data__box {
     font-size: 20px;
@@ -614,7 +615,8 @@ ul li:after {
   }
   .work .work__header__img-box,
   .work .work__header__img {
-    width: 100%;
+    width: 100vw;
+    height: 100%;
     
   }
   .work .work__data__box {
