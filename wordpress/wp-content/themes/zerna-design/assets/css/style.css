@@ -386,7 +386,7 @@ ul li:after {
   }
   .works .work__box .work__thumb .work__thumb__img {
     /* width: 100%; */
-    width: 100vmax;
+    width: 100vw;
     height: 100%;
   }
   .works .work__box .work__name {
