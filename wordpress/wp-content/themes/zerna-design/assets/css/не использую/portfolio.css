@@ -1,0 +1,180 @@
+.wrapper {
+  width: 100%;
+}
+
+.portfolio-wr {
+  width: 93%;
+  margin: 0 auto;
+}
+
+.portfolio .portfolio__header {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+}
+
+.portfolio .portfolio__filter {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+}
+
+.portfolio .portfolio__filter p {
+  margin-right: 1em;
+}
+
+.portfolio .portfolio__filter .portfolio__filter__category .portfolio__filter__category__ul .portfolio__filter__category__li {
+  list-style: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.portfolio .portfolio__filter .portfolio__filter__category .portfolio__filter__category__ul .portfolio__filter__category__li::after {
+  content: " / ";
+}
+
+.portfolio .portfolio__filter .portfolio__filter__category .portfolio__filter__category__ul .portfolio__filter__category__li:nth-last-child(-n+1)::after {
+  content: "";
+}
+
+.pr-works {
+  display: -ms-grid;
+  display: grid;
+}
+
+.pr-works .pr-work__box .pr-work__thumb {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pr-works .pr-work__box .pr-work__thumb .pr-work__thumb__img {
+  width: 100%;
+}
+
+.pr-works .pr-work__box .pr-work__name {
+  font-family: 'centurygothic_bold', sans-serif;
+  font-style: normal;
+}
+
+.pr-works .pr-work__box .pr-work__category {
+  font-family: 'centurygothic', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.pr-works .pr-work__box .pr-work__link {
+  color: #000;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .portfolio {
+    margin: 250px auto 60px;
+  }
+  .portfolio .portfolio__header {
+    font-size: 66px;
+  }
+  .portfolio .portfolio__filter {
+    margin: 43px 0 0;
+    font-size: 20px;
+  }
+  .portfolio .portfolio__filter .portfolio__filter__category p {
+    display: inline-block;
+  }
+  .pr-works {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  .pr-works .pr-work__box {
+    margin-bottom: 30px;
+  }
+  .pr-works .pr-work__box:nth-child(2n) {
+    margin: 25px 0 25px 15px;
+  }
+  .pr-works .pr-work__box:nth-child(2n + 1) {
+    margin: 25px 15px 0 0px;
+  }
+  .pr-works .pr-work__box .pr-work__name {
+    margin: 5px 0 0;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .pr-works .pr-work__box .pr-work__category {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 690px) {
+  .portfolio {
+    margin: 250px auto 60px;
+  }
+  .portfolio .portfolio__header {
+    font-size: 66px;
+  }
+  .portfolio .portfolio__filter {
+    margin: 43px 0 0;
+    font-size: 20px;
+  }
+  .portfolio .portfolio__filter .portfolio__filter__category p {
+    display: inline-block;
+  }
+  .pr-works {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  .pr-works .pr-work__box:nth-child(2n) {
+    margin: 25px 0 25px 15px;
+  }
+  .pr-works .pr-work__box:nth-child(2n + 1) {
+    margin: 25px 15px 0 0px;
+  }
+  .pr-works .pr-work__box .pr-work__name {
+    margin: 25px 0 6px 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .pr-works .pr-work__box .pr-work__category {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 1024px) {
+  .portfolio {
+    margin: 95px auto 40px;
+  }
+  .portfolio .portfolio__header {
+    font-size: 46px;
+  }
+  .portfolio .portfolio__filter {
+    margin: 16px 0 0;
+    font-size: 16px;
+  }
+  .portfolio .portfolio__filter .portfolio__filter__category p {
+    display: block;
+    margin-bottom: 7px;
+  }
+  .pr-works {
+    -ms-grid-columns: (minmax(320px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+  .pr-works .pr-work__box {
+    margin-bottom: 30px;
+  }
+  .pr-works .pr-work__box .pr-work__name {
+    margin: 5px 0 0;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .pr-works .pr-work__box .pr-work__category {
+    font-size: 14px;
+  }
+}
+/*# sourceMappingURL=portfolio.css.map */

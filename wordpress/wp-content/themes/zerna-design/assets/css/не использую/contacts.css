@@ -1,0 +1,240 @@
+.wrapper {
+  width: 100%;
+}
+
+.wrapper .content {
+  width: 93%;
+}
+
+.wrapper .content .message-box .message__header {
+  font-family: 'centurygothic_bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.wrapper .content .message-box .message__about {
+  font-family: 'centurygothic_bold', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.wrapper .content .contact-form .contact-form__header {
+  font-family: 'centurygothic', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #3A3A3A;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .input-email,
+.wrapper .content .contact-form .contact-form__input-box .input-name,
+.wrapper .content .contact-form .contact-form__input-box .input-number-messanger,
+.wrapper .content .contact-form .contact-form__input-box .input-about {
+  border: none;
+  border-bottom: #ACACAC solid 1px;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .input-email,
+.wrapper .content .contact-form .contact-form__input-box .input-name,
+.wrapper .content .contact-form .contact-form__input-box .input-number-messanger,
+.wrapper .content .contact-form .contact-form__input-box .input-about,
+.wrapper .content .contact-form .contact-form__input-box ::-webkit-input-placeholder {
+  font-family: 'centurygothic';
+  font-style: normal;
+  font-weight: 400;
+  color: #ACACAC;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .input-email,
+.wrapper .content .contact-form .contact-form__input-box .input-name,
+.wrapper .content .contact-form .contact-form__input-box .input-number-messanger,
+.wrapper .content .contact-form .contact-form__input-box .input-about,
+.wrapper .content .contact-form .contact-form__input-box :-ms-input-placeholder {
+  font-family: 'centurygothic';
+  font-style: normal;
+  font-weight: 400;
+  color: #ACACAC;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .input-email,
+.wrapper .content .contact-form .contact-form__input-box .input-name,
+.wrapper .content .contact-form .contact-form__input-box .input-number-messanger,
+.wrapper .content .contact-form .contact-form__input-box .input-about,
+.wrapper .content .contact-form .contact-form__input-box ::-ms-input-placeholder {
+  font-family: 'centurygothic';
+  font-style: normal;
+  font-weight: 400;
+  color: #ACACAC;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .input-email,
+.wrapper .content .contact-form .contact-form__input-box .input-name,
+.wrapper .content .contact-form .contact-form__input-box .input-number-messanger,
+.wrapper .content .contact-form .contact-form__input-box .input-about,
+.wrapper .content .contact-form .contact-form__input-box ::placeholder {
+  font-family: 'centurygothic';
+  font-style: normal;
+  font-weight: 400;
+  color: #ACACAC;
+}
+
+.wrapper .content .contact-form .contact-form__input-box .submit-btn {
+  border: none;
+  background-color: transparent;
+  font-family: 'centurygothic';
+  font-style: normal;
+  font-weight: 400;
+  color: #3A3A3A;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) {
+  .content {
+    margin: 250px auto;
+  }
+  .message__about {
+    width: 1000px;
+  }
+  .message-box .message__header {
+    font-size: 40px;
+    margin: 0 0 60px 0;
+  }
+  .message-box .message__about {
+    font-size: 40px;
+    margin: 0 0 130px 0;
+  }
+  .contact-form {
+    width: 700px;
+  }
+  .contact-form .contact-form__header {
+    font-size: 40px;
+  }
+  .contact-form .contact-form__input-box {
+    margin: 50px 0 0 0;
+  }
+  .contact-form .contact-form__input-box .input-email,
+  .contact-form .contact-form__input-box .input-name,
+  .contact-form .contact-form__input-box .input-number-messanger,
+  .contact-form .contact-form__input-box .input-about {
+    margin-bottom: 45px;
+    padding-bottom: 5px;
+  }
+  .contact-form .contact-form__input-box .input-email,
+  .contact-form .contact-form__input-box .input-name,
+  .contact-form .contact-form__input-box .input-number-messanger,
+  .contact-form .contact-form__input-box .input-about,
+  .contact-form .contact-form__input-box ::-webkit-input-placeholder {
+    font-size: 30px;
+  }
+  .contact-form .contact-form__input-box .input-email,
+  .contact-form .contact-form__input-box .input-name,
+  .contact-form .contact-form__input-box .input-number-messanger,
+  .contact-form .contact-form__input-box .input-about,
+  .contact-form .contact-form__input-box :-ms-input-placeholder {
+    font-size: 30px;
+  }
+  .contact-form .contact-form__input-box .input-email,
+  .contact-form .contact-form__input-box .input-name,
+  .contact-form .contact-form__input-box .input-number-messanger,
+  .contact-form .contact-form__input-box .input-about,
+  .contact-form .contact-form__input-box ::-ms-input-placeholder {
+    font-size: 30px;
+  }
+  .contact-form .contact-form__input-box .input-email,
+  .contact-form .contact-form__input-box .input-name,
+  .contact-form .contact-form__input-box .input-number-messanger,
+  .contact-form .contact-form__input-box .input-about,
+  .contact-form .contact-form__input-box ::placeholder {
+    font-size: 30px;
+  }
+  .contact-form .contact-form__input-box .input-email {
+    width: 100%;
+  }
+  .contact-form .contact-form__input-box .input-name {
+    width: 48%;
+    margin-right: 17px;
+  }
+  .contact-form .contact-form__input-box .input-number-messanger {
+    width: 49%;
+  }
+  .contact-form .contact-form__input-box .input-about {
+    width: 100%;
+  }
+  .contact-form .contact-form__input-box .submit-btn {
+    font-size: 30px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 1024px) {
+  .content {
+    margin: 120px auto;
+  }
+  .message-box .message__header {
+    font-size: 30px;
+    margin: 0 0 40px 0;
+  }
+  .message-box .message__about {
+    font-size: 30px;
+    margin: 0 0 90px 0;
+  }
+  .contact-form .contact-form__header {
+    font-size: 25px;
+  }
+  .contact-form .contact-form__input-box {
+    margin: 50px 0 0 0;
+  }
+  .contact-form .contact-form__input-box .input-email,
+  .contact-form .contact-form__input-box .input-name,
+  .contact-form .contact-form__input-box .input-number-messanger,
+  .contact-form .contact-form__input-box .input-about {
+    margin-bottom: 45px;
+    padding-bottom: 5px;
+  }
+  .contact-form .contact-form__input-box .input-email,
+  .contact-form .contact-form__input-box .input-name,
+  .contact-form .contact-form__input-box .input-number-messanger,
+  .contact-form .contact-form__input-box .input-about,
+  .contact-form .contact-form__input-box ::-webkit-input-placeholder {
+    font-size: 25px;
+  }
+  .contact-form .contact-form__input-box .input-email,
+  .contact-form .contact-form__input-box .input-name,
+  .contact-form .contact-form__input-box .input-number-messanger,
+  .contact-form .contact-form__input-box .input-about,
+  .contact-form .contact-form__input-box :-ms-input-placeholder {
+    font-size: 25px;
+  }
+  .contact-form .contact-form__input-box .input-email,
+  .contact-form .contact-form__input-box .input-name,
+  .contact-form .contact-form__input-box .input-number-messanger,
+  .contact-form .contact-form__input-box .input-about,
+  .contact-form .contact-form__input-box ::-ms-input-placeholder {
+    font-size: 25px;
+  }
+  .contact-form .contact-form__input-box .input-email,
+  .contact-form .contact-form__input-box .input-name,
+  .contact-form .contact-form__input-box .input-number-messanger,
+  .contact-form .contact-form__input-box .input-about,
+  .contact-form .contact-form__input-box ::placeholder {
+    font-size: 25px;
+  }
+  .contact-form .contact-form__input-box .input-email {
+    width: 100%;
+  }
+  .contact-form .contact-form__input-box .input-name {
+    width: 100%;
+    margin-right: 17px;
+  }
+  .contact-form .contact-form__input-box .input-number-messanger {
+    width: 100%;
+  }
+  .contact-form .contact-form__input-box .input-about {
+    width: 100%;
+  }
+  .contact-form .contact-form__input-box .submit-btn {
+    font-size: 25px;
+  }
+  .contact-form .contact-form__input-box .submit-btn .submit-img {
+    width: 15%;
+  }
+}
+/*# sourceMappingURL=contacts.css.map */

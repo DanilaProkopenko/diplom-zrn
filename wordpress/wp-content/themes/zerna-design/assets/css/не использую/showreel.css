@@ -1,0 +1,65 @@
+.showreel-wr {
+  width: 93%;
+}
+
+.showreel-header {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  color: #000;
+}
+
+.showreel-comment {
+  font-family: 'centurygothic', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #000;
+}
+
+.video-box {
+  background-color: #C4C4C4;
+}
+
+@media screen and (min-width: 1024px) {
+  .showreel-wr {
+    margin: 250px auto 0 auto;
+  }
+  .showreel-wr .showreel-header {
+    font-size: 66px;
+  }
+  .showreel-wr .showreel-comment {
+    line-height: 61px;
+    margin-top: 60px;
+    font-size: 50px;
+  }
+  .showreel-wr .video-box,
+  .showreel-wr .video-video {
+    width: 100%;
+    height: 800px;
+  }
+  .showreel-wr .video-box {
+    margin: 130px auto;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 1024px) {
+  .showreel-wr {
+    margin: 120px auto 0 auto;
+  }
+  .showreel-wr .showreel-header {
+    font-size: 46px;
+  }
+  .showreel-wr .showreel-comment {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .showreel-wr .video-box,
+  .showreel-wr .video-video {
+    width: 100%;
+    height: 230px;
+  }
+  .showreel-wr .video-box {
+    margin: 60px auto;
+  }
+}
+/*# sourceMappingURL=showreel.css.map */

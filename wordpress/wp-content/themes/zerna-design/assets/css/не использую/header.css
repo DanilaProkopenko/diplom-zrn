@@ -1,0 +1,198 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@font-face {
+  font-family: "centurygothic";
+  src: url("../media/fonts/Century-Gothic/centurygothic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "centurygothic_bold";
+  src: url("../media/fonts/Century-Gothic/centurygothic_bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: bold;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.a {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  position: fixed;
+  top: -10px;
+  width: 94%;
+  font-family: 'Montserrat', sans-serif;
+  padding: 46px 3%;
+  z-index: 10;
+}
+
+.header .header__wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header .header__wrapper .logo {
+  display: inline-block;
+}
+
+.header .header__wrapper .header__end {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.header .header__wrapper .header__end .header-ul {
+  margin: 0 80px 0 auto;
+}
+
+.header .header__wrapper .header__end .header-ul .header-li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 35px;
+}
+
+.header .header__wrapper .header__end .header-ul .header-li .header-links {
+  font-size: 26px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #000;
+}
+
+.header .header__wrapper .header__end .header-ul .header-li .header-links .header-links__upper-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 10px;
+  text-align: right;
+}
+
+.header .header__wrapper .header__end .header-ul .header-li .header-links:hover {
+  color: #FF003D;
+}
+
+.header .header__wrapper .header__end .menu-btn {
+  display: inline-block;
+  margin: 0 0 15px auto;
+  cursor: pointer;
+}
+
+.header .header__wrapper .header__end .menu-btn .menu-btn__img {
+  display: inline-block;
+}
+
+.screen-menu__box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  padding: 2% 5%;
+  z-index: 11;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: -webkit-transform 1.5s;
+  transition: -webkit-transform 1.5s;
+  transition: transform 1.5s;
+  transition: transform 1.5s, -webkit-transform 1.5s;
+}
+
+.screen-menu__box .screen-menu {
+  width: 100vh;
+  height: 100vh;
+  background-color: #000;
+}
+
+.screen-menu__box .screen-menu .screen-menu__menu-btn {
+  cursor: pointer;
+}
+
+.screen-menu__box .screen-menu .screen-menu__menu-btn .screen-menu__menu-close-btn__img {
+  margin-bottom: 20px;
+}
+
+.screen-menu__box .screen-menu .screen-menuа__ul .screen-menu__li {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  list-style: none;
+  color: #fff;
+  margin-bottom: 55px;
+}
+
+.screen-menu__box .screen-menu .screen-menuа__ul .screen-menu__li .screen-menu__links {
+  text-decoration: none;
+  color: #fff;
+}
+
+.screen-menu__box .screen-menu .screen-menuа__ul .screen-menu__li .screen-menu__links .screen-menu__links__upper-text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.screen-menu__box .screen-menu .screen-menuа__ul .screen-menu__li .screen-menu__links:hover {
+  color: #FF003D;
+}
+
+.screen-menu__box .screen-menu__address .screen-menu__address__header {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.screen-menu__box .screen-menu__address .screen-menu__address__text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #6B6B6B;
+  width: 300px;
+}
+
+.active {
+  display: block;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+@media screen and (min-width: 1024px) {
+  .header-ul {
+    display: inline-block;
+  }
+  .logo,
+  .img-logo {
+    width: 137px;
+    height: 61px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 1024px) {
+  .header-ul {
+    display: none;
+  }
+  .logo,
+  .img-logo {
+    width: 89px;
+    height: 61px;
+  }
+}
+/*# sourceMappingURL=header.css.map */
