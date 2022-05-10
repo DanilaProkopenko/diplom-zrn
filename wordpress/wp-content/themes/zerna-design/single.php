@@ -29,8 +29,7 @@
                 <?php
                 add_filter('the_content', 'add_image_fluid_class');
                 add_filter('the_content', 'add__figure_fluid_class');
-                ?>
-                <?php the_content() ?>
+                the_content(); ?>
             </div>
             <div class="work__discription__img-box">
 

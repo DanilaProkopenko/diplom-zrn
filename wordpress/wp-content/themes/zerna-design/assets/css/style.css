@@ -385,7 +385,9 @@ ul li:after {
     width: 100%;
   }
   .works .work__box .work__thumb .work__thumb__img {
-    width: 100%;
+    /* width: 100%; */
+    width: 100vmax;
+    height: 100%;
   }
   .works .work__box .work__name {
     position: absolute;
@@ -518,6 +520,7 @@ ul li:after {
   .works .work__box .work__thumb .work__thumb__img {
     border-radius: 10px;
     width: 100%;
+    height: 100%;
   }
   .works .work__box .work__name {
     position: absolute;
@@ -612,6 +615,7 @@ ul li:after {
   .work .work__header__img-box,
   .work .work__header__img {
     width: 100%;
+    
   }
   .work .work__data__box {
     font-size: 14px;
