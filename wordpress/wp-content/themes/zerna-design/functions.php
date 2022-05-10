@@ -1,5 +1,11 @@
 <?
 
+add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
+function my_scripts_method(){
+	wp_enqueue_script( 'jquery' );
+}
+
+
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('style-name', get_template_directory_uri() . '/assets/css/style.css');
     // <script src="./js/screen-menu.js"></script>
@@ -75,4 +81,3 @@ function add__figure_fluid_class($content)
     $content = preg_replace($pattern, $replacement, $content);
     return $content;
 }
-

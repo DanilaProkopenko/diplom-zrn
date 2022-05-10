@@ -690,10 +690,24 @@ ul li:after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+
+  position: relative;
+}
+
+.pr-work__thumb::after{
+  display: block;
+  content: '';
+  /* 16:9 aspect ratio */
+  padding-bottom: 56.25%;
 }
 
 .pr-works .pr-work__box .pr-work__thumb .pr-work__thumb__img {
   width: 100%;
+  height: 100%;
+
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .pr-works .pr-work__box .pr-work__name {

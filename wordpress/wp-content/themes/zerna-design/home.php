@@ -16,26 +16,13 @@ Template Name: home
         </div>
 
         <div class="works">
-            <!-- <div class="work__box">
-                <a href="" class="work__link">
-                    <div class="work__thumb">
-                        <img src="<?php bloginfo('template_url') ?>/assets/media/image/main-screen/main-pic.png" alt="" class="work__thumb__img">
-                    </div>
-                    <div class="work__name">
-                        <p>
-                            Shell
-                        </p>
-                    </div>
-                </a>
-            </div> -->
-
             <?php
             global $post;
 
             $myposts = get_posts([
                 'numberposts' => 4,
                 // 'offset'      => 1,
-                'category'    => 6
+                'category'    => 5
             ]);
 
             if ($myposts) {
@@ -63,47 +50,6 @@ Template Name: home
 
             wp_reset_postdata(); // Сбрасываем $post
             ?>
-
-
-            <!-- <div class="work__box">
-                    <a href="" class="work__link">
-
-                        <div class="work__thumb">
-                            <img src="<?php bloginfo('template_url') ?>/assets/media/image/main-screen/garden.png" alt="" class="work__thumb__img">
-                        </div>
-                        <div class="work__name">
-                            <p>
-                                Culture garden
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="work__box">
-                    <a href="" class="work__link">
-
-                        <div class="work__thumb">
-                            <img src="<?php bloginfo('template_url') ?>/assets/media/image/main-screen/shark.png" alt="" class="work__thumb__img">
-                        </div>
-                        <div class="work__name">
-                            <p>
-                                Shark
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="work__box">
-                    <a href="" class="work__link">
-
-                        <div class="work__thumb">
-                            <img src="<?php bloginfo('template_url') ?>/assets/media/image/main-screen/malahit.png" alt="" class="work__thumb__img">
-                        </div>
-                        <div class="work__name">
-                            <p>
-                                Malahit
-                            </p>
-                        </div>
-                    </a>
-                </div> -->
         </div>
 
 

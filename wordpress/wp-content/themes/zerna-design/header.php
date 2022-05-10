@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li class="header-li">
-                        <a href="./portfolio.html" class="header-links">
+                        <a href="http://diplom-zrn/wordpress/portfolio/" class="header-links">
                             <p class="header-links__upper-text">02</p>
                             Works
                         </a>
@@ -77,7 +77,7 @@
                         </a>
                     </li>
                     <li class="screen-menu__li">
-                        <a href="./portfolio.html" class="screen-menu__links">
+                        <a href="http://diplom-zrn/wordpress/portfolio/" class="screen-menu__links">
                             <p class="screen-menu__links__upper-text">02</p>
                             Works
                         </a>
