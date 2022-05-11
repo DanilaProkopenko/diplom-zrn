@@ -2,7 +2,6 @@
 /*
 Template Name: portfolio
 */
-// http://diplom-zrn/wordpress/portfolio/
 ?>
 <?php get_header() ?>
 <div class="wrapper">
@@ -16,25 +15,23 @@ Template Name: portfolio
 
                 <!-- РАБОТАЕТ AJAX -->
                 <?php get_header(); ?>
-                <style type="text/css">
-                    .portfolio__filter__category__ul li {
-                        cursor: pointer
-                    }
-
-                    .portfolio__filter__category__ul li:hover {
-                        color: #ff003d
-                    }
-
-                    .portfolio__filter__category__ul li:active{
-                        color: #ff003d
-                    }
-                </style>
 
                 <script type="text/javascript">
+                    /*AJAX*/
                     jQuery(document).ready(function($) {
+                        //по загрузке стр вывод всех постов 
+                        getPosts(5);
+                        // по клику на выбранную категорию
                         jQuery(".portfolio__filter__category__ul li").on("click", function() {
                             console.log(this);
                             getPosts(this.getAttribute("cat_id"));
+                        });
+
+                        // toggle li category
+                        $('#category__ul li').click(function() {
+                            // $(this).addClass('active');
+                            $(this).addClass('portfolio__filter__category__li_active').siblings().removeClass('portfolio__filter__category__li_active')
+                            // $(this).parent().children('li').not(this).removeClass('active');
                         });
                     });
 
@@ -56,14 +53,12 @@ Template Name: portfolio
                             <p> Filter by</p>
                             <?php
                             $data = get_cat_name(5);
-                            echo "<li cat_id=\"" . get_cat_id(get_cat_name(5)) . "\" class='portfolio__filter__category__li'>All</li>";
+                            echo "<li cat_id=\"" . get_cat_id(get_cat_name(5)) . "\" id=\"" . get_cat_id(get_cat_name(5)) . "\" class='portfolio__filter__category__li'>All</li> / ";
                             ?>
                             <?php
                             $data = get_categories('child_of=5');
                             foreach ($data as $one) {
-                                // $one->term_id
-                                // $one->slug
-                                echo "<li cat_id=\"" . $one->term_id . "\" class='portfolio__filter__category__li'>" . $one->name . "</li>";
+                                echo "<li cat_id=\"" . $one->term_id . "\" id=" . $one->term_id . " class='portfolio__filter__category__li'>" . $one->name . "</li> / ";
                             }
                             ?>
                         </ul>
@@ -75,7 +70,7 @@ Template Name: portfolio
                     if (count($data)) {
                         $args = [
                             'post_type' => 'post',
-                            'posts_per_page' => 10,
+                            // 'posts_per_page' => 10,
                             'cat' => $data[0]->term_id
                         ];
                         $loop = new WP_Query($args);
@@ -90,8 +85,7 @@ Template Name: portfolio
                                     </div>
                                     <div class="pr-work__category">
                                         illustration
-                                        <?get_cat_name($data[0]->term_id)?>
-
+                                        <? wp_get_post_categories($loop->ID); ?>
                                     </div>
                                 </a>
                             </div>
@@ -113,6 +107,6 @@ Template Name: portfolio
             </form>
         </div>
     </div>
+</div>
 
-
-    <?php get_footer() ?>
+<?php get_footer() ?>

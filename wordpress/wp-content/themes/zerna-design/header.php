@@ -24,7 +24,7 @@
         <div class="header__wrapper">
 
             <div class="logo">
-                <a href="./index.html">
+                <a href="http://diplom-zrn/wordpress/">
                     <img src="<?php bloginfo('template_url') ?>/assets/media/image/logo/logo.svg" alt="ZERNA.design" class="img-logo">
                 </a>
             </div>
@@ -32,7 +32,7 @@
             <div class="header__end">
                 <ul class="header-ul">
                     <li class="header-li">
-                        <a href="./showreel.html" class="header-links">
+                        <a href="http://diplom-zrn/wordpress/showreel/" class="header-links">
                             <?php echo $logo_img; ?>
                             <p class="header-links__upper-text">01</p>
                             Showreel
@@ -45,13 +45,13 @@
                         </a>
                     </li>
                     <li class="header-li">
-                        <a href="" class="header-links">
+                        <a href="http://diplom-zrn/wordpress/studio/" class="header-links">
                             <p class="header-links__upper-text">03</p>
                             Studio
                         </a>
                     </li>
                     <li class="header-li">
-                        <a href="./contacts.html" class="header-links">
+                        <a href="http://diplom-zrn/wordpress/contacts/" class="header-links">
                             <p class="header-links__upper-text">04</p>
                             Contacts
                         </a>
@@ -73,7 +73,7 @@
 
                 <ul class="screen-menuа__ul">
                     <li class="screen-menu__li">
-                        <a href="./showreel.html" class="screen-menu__links">
+                        <a href="http://diplom-zrn/wordpress/showreel/" class="screen-menu__links">
                             <p class="screen-menu__links__upper-text">01</p>
                             Showreel
                         </a>
@@ -85,13 +85,13 @@
                         </a>
                     </li>
                     <li class="screen-menu__li">
-                        <a href="" class="screen-menu__links">
+                        <a href="http://diplom-zrn/wordpress/studio/" class="screen-menu__links">
                             <p class="screen-menu__links__upper-text">03</p>
                             Studio
                         </a>
                     </li>
                     <li class="screen-menu__li">
-                        <a href="./contacts.html" class="screen-menu__links">
+                        <a href="http://diplom-zrn/wordpress/contacts/" class="screen-menu__links">
                             <p class="screen-menu__links__upper-text">04</p>
                             Contacts
                         </a>

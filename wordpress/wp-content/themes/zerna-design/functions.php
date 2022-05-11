@@ -83,22 +83,7 @@ function add__figure_fluid_class($content)
     return $content;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// AJAX category post
 function more_post_ajax()
 {
     $category = $_POST["category"];
@@ -106,13 +91,12 @@ function more_post_ajax()
     $args = [
         'suppress_filters' => true,
         'post_type' => 'post',
-        'posts_per_page' => 10,
+        // 'posts_per_page' => 10,
         'cat' => $category
     ];
     $loop = new WP_Query($args);
     while ($loop->have_posts()) {
         $loop->the_post();
-        // echo the_title();
 ?>
         <div class="pr-work__box">
             <a href="<?php the_permalink(); ?>" class="pr-work__link">
