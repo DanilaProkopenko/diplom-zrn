@@ -1,8 +1,9 @@
 <?
 
-add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
-function my_scripts_method(){
-	wp_enqueue_script( 'jquery' );
+add_action('wp_enqueue_scripts', 'my_scripts_method');
+function my_scripts_method()
+{
+    wp_enqueue_script('jquery');
 }
 
 
@@ -81,3 +82,54 @@ function add__figure_fluid_class($content)
     $content = preg_replace($pattern, $replacement, $content);
     return $content;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function more_post_ajax()
+{
+    $category = $_POST["category"];
+    header("Content-Type: text/html");
+    $args = [
+        'suppress_filters' => true,
+        'post_type' => 'post',
+        'posts_per_page' => 10,
+        'cat' => $category
+    ];
+    $loop = new WP_Query($args);
+    while ($loop->have_posts()) {
+        $loop->the_post();
+        // echo the_title();
+?>
+        <div class="pr-work__box">
+            <a href="<?php the_permalink(); ?>" class="pr-work__link">
+                <div class="pr-work__thumb">
+                    <?php the_post_thumbnail(array(1920, 1080), array('class' => 'pr-work__thumb__img')); ?>
+                </div>
+                <div class="pr-work__name">
+                    <?php the_title(); ?>
+                </div>
+                <div class="pr-work__category">
+                    illustration
+                </div>
+            </a>
+        </div>
+<?
+    }
+    exit;
+}
+add_action('wp_ajax_nopriv_more_post_ajax', 'more_post_ajax');
+add_action('wp_ajax_more_post_ajax', 'more_post_ajax');

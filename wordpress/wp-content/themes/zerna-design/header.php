@@ -14,6 +14,8 @@
 
     <!-- <link rel="stylesheet" href="/css/style.css"> -->
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -31,7 +33,7 @@
                 <ul class="header-ul">
                     <li class="header-li">
                         <a href="./showreel.html" class="header-links">
-                            <?php echo $logo_img;?>
+                            <?php echo $logo_img; ?>
                             <p class="header-links__upper-text">01</p>
                             Showreel
                         </a>
