@@ -12,8 +12,13 @@
             <div class="work__data__box">
                 <div class="work__data__category">
                     <!-- Branding/ -->
-                    <?php $cat_id = get_category($category);
-                    echo get_cat_name($cat_id); ?>
+                    <?php
+                    $post_id = get_the_ID();
+                    $cat_id = get_the_category($post_id)[0]->term_id;
+                    $cat_name = get_cat_name($cat_id);
+                    ?>
+                    <? echo $cat_name; ?>
+
                 </div>
                 <div class="work__data">
                     <!-- December 20, 2021 -->
@@ -31,11 +36,7 @@
                 add_filter('the_content', 'add__figure_fluid_class');
                 the_content(); ?>
             </div>
-            <div class="work__discription__img-box">
-
-
-                <img src="./media/image/portfolio/malahit.png" alt="" class="work__discription__img">
-            </div>
+           
         </div>
 
 

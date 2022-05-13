@@ -53,7 +53,8 @@ Template Name: portfolio
                             <p> Filter by</p>
                             <?php
                             $data = get_cat_name(5);
-                            echo "<li cat_id=\"" . get_cat_id(get_cat_name(5)) . "\" id=\"" . get_cat_id(get_cat_name(5)) . "\" class='portfolio__filter__category__li'>All</li> / ";
+                            // Вывожу категорию All с активным классом сразу
+                            echo "<li cat_id=\"" . get_cat_id(get_cat_name(5)) . "\" id=\"" . get_cat_id(get_cat_name(5)) . "\" class='portfolio__filter__category__li portfolio__filter__category__li_active'>All</li> / ";
                             ?>
                             <?php
                             $data = get_categories('child_of=5');
@@ -66,6 +67,7 @@ Template Name: portfolio
                     </div>
                 </div>
                 <div class="post_list pr-works">
+                    <!-- Данный блок показывается до полной загрузки страницы, а после страница показывает, что в function -->
                     <?php
                     if (count($data)) {
                         $args = [
@@ -74,6 +76,7 @@ Template Name: portfolio
                             'cat' => $data[0]->term_id
                         ];
                         $loop = new WP_Query($args);
+
                         while ($loop->have_posts()) : $loop->the_post(); ?>
                             <div class="pr-work__box">
                                 <a href="<?php the_permalink(); ?>" class="pr-work__link">

@@ -91,12 +91,16 @@ function more_post_ajax()
     $args = [
         'suppress_filters' => true,
         'post_type' => 'post',
-        // 'posts_per_page' => 10,
+        // 'posts_per_page' => 2,
         'cat' => $category
     ];
     $loop = new WP_Query($args);
     while ($loop->have_posts()) {
         $loop->the_post();
+        $post_id = get_the_ID();
+        $cat_id = get_the_category($post_id)[0]->term_id;
+        $cat_name = get_cat_name($cat_id);
+
 ?>
         <div class="pr-work__box">
             <a href="<?php the_permalink(); ?>" class="pr-work__link">
@@ -107,7 +111,7 @@ function more_post_ajax()
                     <?php the_title(); ?>
                 </div>
                 <div class="pr-work__category">
-                    illustration
+                    <? echo $cat_name; ?>
                 </div>
             </a>
         </div>
