@@ -68,36 +68,89 @@ Template Name: portfolio
                 </div>
                 <div class="post_list pr-works">
                     <!-- Данный блок показывается до полной загрузки страницы, а после страница показывает, что в function -->
-                    <?php
-                    if (count($data)) {
-                        $args = [
-                            'post_type' => 'post',
-                            // 'posts_per_page' => 10,
-                            'cat' => $data[0]->term_id
-                        ];
-                        $loop = new WP_Query($args);
+                    <script>
+                        // Этот блок не работает ajax
+                        // more-posts
+                        $("#more-posts").on("click", function() {
+                            console.log(this);
 
-                        while ($loop->have_posts()) : $loop->the_post(); ?>
-                            <div class="pr-work__box">
-                                <a href="<?php the_permalink(); ?>" class="pr-work__link">
-                                    <div class="pr-work__thumb">
-                                        <?php the_post_thumbnail(array(1920, 1080), array('class' => 'pr-work__thumb__img')); ?>
-                                    </div>
-                                    <div class="pr-work__name">
-                                        <?php the_title(); ?>
-                                    </div>
-                                    <div class="pr-work__category">
-                                        illustration
-                                        <? wp_get_post_categories($loop->ID); ?>
-                                    </div>
-                                </a>
-                            </div>
+                        })
+
+                        function getPosts(catid) {
+                            var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+                            jQuery.post(ajaxUrl, {
+                                    action: "more_post_ajax",
+                                    category: catid
+                                })
+                                .done(function(posts) {
+                                    jQuery(".pr-works").html(posts);
+                                });
+                        }
+
+                        var page = 2;
+                        $(document).ready(function() {
+                            $('body').on('click', '#more_posts', function() {
+                                var template = $(this).data('template');
+                                var data = {
+                                    'action': 'load_more_ajax',
+                                    'page': page
+                                };
+                                // data:
+                                var ajaxurl = "<?php echo admin_url('admin-ajax.php') ?>";
+
+                                $.post(blog.ajaxurl, data, function(response) {
+                                    if ($.trim(response) != '') {
+                                        $('#row_append').append(response);
+                                        page++;
+                                    } else {
+                                        $('#more_posts').hide();
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+
                     <?php
-                        endwhile;
-                    }
-                    wp_reset_postdata();
+                    $args = [
+                        'post_type' => 'post',
+                        'posts_per_page' => 2,
+                        'cat' => 5,
+                        'paged' => 1,
+
+                    ];
+                    $loop = new WP_Query($args);
                     ?>
+                    <? while ($loop->have_posts()) : $loop->the_post(); ?>
+                        <!-- <div class="pr-work__box">
+                            <a href="<?php the_permalink(); ?>" class="pr-work__link">
+                                <div class="pr-work__thumb">
+                                    <?php the_post_thumbnail(array(1920, 1080), array('class' => 'pr-work__thumb__img')); ?>
+                                </div>
+                                <div class="pr-work__name">
+                                    <?php the_title(); ?>
+                                </div>
+                                <div class="pr-work__category">
+                                    illustration
+                                    <? wp_get_post_categories($loop->ID); ?>
+                                </div>
+                            </a>
+                        </div> -->
+                        Загрузка
+                    <?php endwhile;
+                    wp_reset_postdata(); ?>
+
+                    <div id="row_append"></div>
+
                 </div>
+
+                <!-- <style>
+                    .load-more-btn {
+                        cursor: pointer;
+                    }
+                </style>
+                <div class="load-more-btn">
+                    <div class="btn" id="more_posts">Загрущить еще</div>
+                </div> -->
             </div>
 
 

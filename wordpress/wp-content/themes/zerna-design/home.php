@@ -53,7 +53,7 @@ Template Name: home
         </div>
 
 
-        <form action="" method="get" class="order-form">
+        <form action="mail.php" method="POST" class="order-form">
             <div class="order-form__box">
                 <input type="email" name="email" placeholder="Order design" class="order-form__email">
                 <input type="submit" class="order-form__submit" value="">

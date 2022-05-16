@@ -36,7 +36,6 @@
                 add_filter('the_content', 'add__figure_fluid_class');
                 the_content(); ?>
             </div>
-           
         </div>
 
 
