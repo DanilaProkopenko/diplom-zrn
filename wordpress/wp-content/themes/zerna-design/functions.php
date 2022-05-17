@@ -120,54 +120,84 @@ function more_post_ajax()
     }
     exit;
 }
-
-
-
-// new ajax not working
 add_action('wp_ajax_nopriv_more_post_ajax', 'more_post_ajax');
 add_action('wp_ajax_more_post_ajax', 'more_post_ajax');
 
-function blog_scripts()
-{
-    // Register the script
-    wp_register_script('custom-script', get_stylesheet_directory_uri() . '/js/custom.js', array('jquery'), false, true);
 
-    // Localize the script with new data
-    $script_data_array = array(
-        'ajaxurl' => admin_url('admin-ajax.php'),
-        'security' => wp_create_nonce('load_more_posts'),
-    );
-    wp_localize_script('custom-script', 'blog', $script_data_array);
+// Telegram message
+// function cf7_send_tg($contact_form, $abort, $submission)
+// {
+//     global $wpcf;
+//     $wpcf->skip_mail = true;  # Отключаем отправку письма на эмейл
+//     // $name2 = $submission->get_posted_data('your-name');  # Название поля Имя
+//     $email2 = $submission->get_posted_data('email');  # Название поля Эмейл
+//     // $subject2 = $submission->get_posted_data('your-subject');  # Название поля Темы
+//     $mess2 = $submission->get_posted_data('your-message');  # Название поля Сообщение
+//     $msg = '*Письмо с сайта bdseo.ru*
+ 
+// ';
+//     // $msg .= $email2 . " ( {$name2}) Тема: {$subject2}";
+//     $msg .= $email2;
+//     $msg .= ' пишет: 
+ 
+// ' . $mess2;
 
-    // Enqueued script with localized data.
-    wp_enqueue_script('custom-script');
-}
-add_action('wp_enqueue_scripts', 'blog_scripts');
+//     // $userId = '264111146'; // id user, которому отправляем письмо
+//     // $token = '1011112249:AAEOhnCB8lq3B8lq3B8lJehhB8lq3LW-IG8'; // Token бота 
+//     $userId = '764707849'; // id user, которому отправляем письмо
+//     $token = '5317565362:AAEyFa8Lriv8sYINtIvCXzlRhv8lX03QxoE'; // Token бота 
 
-function load_more_ajax()
-{
-    // check_ajax_referer('load_more_posts', 'security');
 
-    $paged = $_POST['page'];
-    global $post;
-    // $catID = $_POST['id'];
-    $args = array(
-        'post_type' => 'post',
-        'post_status' => 'publish',
-        'cat' => 5,
-        'paged' => $paged,
-        'posts_per_page' => -1
-    );
-    $blog_posts = new WP_Query($args);
+//     file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?chat_id=' . $userId . '&text=' . urlencode($msg) . '&parse_mode=markdown');
+// }
+// // add the action 
+// add_action('wpcf7_before_send_mail', 'cf7_send_tg', 10, 3); 
+        
 
-    if ($blog_posts->have_posts()) {
-        while ($blog_posts->have_posts()) {
-            $blog_posts->the_post();
-            $cat_real = get_the_category($post->id);
-            $cat_real = $cat_real[1]->term_id;
-        }
-    }
-}
 
-add_action('wp_ajax_load_more_ajax', 'load_more_ajax');
-add_action('wp_ajax_nopriv_load_more_ajax', 'load_more_ajax');
+// // new ajax not working
+
+// function blog_scripts()
+// {
+//     // Register the script
+//     wp_register_script('custom-script', get_stylesheet_directory_uri() . '/js/custom.js', array('jquery'), false, true);
+
+//     // Localize the script with new data
+//     $script_data_array = array(
+//         'ajaxurl' => admin_url('admin-ajax.php'),
+//         'security' => wp_create_nonce('load_more_posts'),
+//     );
+//     wp_localize_script('custom-script', 'blog', $script_data_array);
+
+//     // Enqueued script with localized data.
+//     wp_enqueue_script('custom-script');
+// }
+// add_action('wp_enqueue_scripts', 'blog_scripts');
+
+// function load_more_ajax()
+// {
+//     // check_ajax_referer('load_more_posts', 'security');
+
+//     $paged = $_POST['page'];
+//     global $post;
+//     // $catID = $_POST['id'];
+//     $args = array(
+//         'post_type' => 'post',
+//         'post_status' => 'publish',
+//         'cat' => 5,
+//         'paged' => $paged,
+//         'posts_per_page' => -1
+//     );
+//     $blog_posts = new WP_Query($args);
+
+//     if ($blog_posts->have_posts()) {
+//         while ($blog_posts->have_posts()) {
+//             $blog_posts->the_post();
+//             $cat_real = get_the_category($post->id);
+//             $cat_real = $cat_real[1]->term_id;
+//         }
+//     }
+// }
+
+// add_action('wp_ajax_load_more_ajax', 'load_more_ajax');
+// add_action('wp_ajax_nopriv_load_more_ajax', 'load_more_ajax');

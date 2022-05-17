@@ -394,15 +394,12 @@ ul li:after {
 
   .works .work__box .work__thumb .work__thumb__img {
     /* width: 100%; */
-    /* width: 100vw;
-    height: 100%; */
-
     width: 100%;
-  height: 100%;
+    height: 100%;
 
-  position: absolute;
-  left: 0;
-  top: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
   .works .work__box .work__name {
     position: absolute;

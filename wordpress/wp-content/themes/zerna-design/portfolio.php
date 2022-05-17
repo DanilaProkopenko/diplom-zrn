@@ -68,48 +68,6 @@ Template Name: portfolio
                 </div>
                 <div class="post_list pr-works">
                     <!-- Данный блок показывается до полной загрузки страницы, а после страница показывает, что в function -->
-                    <script>
-                        // Этот блок не работает ajax
-                        // more-posts
-                        $("#more-posts").on("click", function() {
-                            console.log(this);
-
-                        })
-
-                        function getPosts(catid) {
-                            var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
-                            jQuery.post(ajaxUrl, {
-                                    action: "more_post_ajax",
-                                    category: catid
-                                })
-                                .done(function(posts) {
-                                    jQuery(".pr-works").html(posts);
-                                });
-                        }
-
-                        var page = 2;
-                        $(document).ready(function() {
-                            $('body').on('click', '#more_posts', function() {
-                                var template = $(this).data('template');
-                                var data = {
-                                    'action': 'load_more_ajax',
-                                    'page': page
-                                };
-                                // data:
-                                var ajaxurl = "<?php echo admin_url('admin-ajax.php') ?>";
-
-                                $.post(blog.ajaxurl, data, function(response) {
-                                    if ($.trim(response) != '') {
-                                        $('#row_append').append(response);
-                                        page++;
-                                    } else {
-                                        $('#more_posts').hide();
-                                    }
-                                });
-                            });
-                        });
-                    </script>
-
                     <?php
                     $args = [
                         'post_type' => 'post',
@@ -120,8 +78,9 @@ Template Name: portfolio
                     ];
                     $loop = new WP_Query($args);
                     ?>
-                    <? while ($loop->have_posts()) : $loop->the_post(); ?>
-                        <!-- <div class="pr-work__box">
+                    <?
+                    while ($loop->have_posts()) : $loop->the_post(); ?>
+                        <div class="pr-work__box">
                             <a href="<?php the_permalink(); ?>" class="pr-work__link">
                                 <div class="pr-work__thumb">
                                     <?php the_post_thumbnail(array(1920, 1080), array('class' => 'pr-work__thumb__img')); ?>
@@ -134,23 +93,24 @@ Template Name: portfolio
                                     <? wp_get_post_categories($loop->ID); ?>
                                 </div>
                             </a>
-                        </div> -->
-                        Загрузка
-                    <?php endwhile;
-                    wp_reset_postdata(); ?>
+                        </div>
+                    <?php
+                    endwhile;
+                    wp_reset_postdata();
+                    ?>
 
                     <div id="row_append"></div>
 
                 </div>
 
-                <!-- <style>
+                <style>
                     .load-more-btn {
                         cursor: pointer;
                     }
                 </style>
                 <div class="load-more-btn">
                     <div class="btn" id="more_posts">Загрущить еще</div>
-                </div> -->
+                </div>
             </div>
 
 
