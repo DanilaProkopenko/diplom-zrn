@@ -2,9 +2,9 @@
         <div class="footer__wrapper">
             <div class="footer__upper-line">
                 <ul class="footer-ul">
-                    <li class="footer-li"><a href="" class="footer-links">Behance</a></li>
-                    <li class="footer-li"><a href="" class="footer-links">Instagram</a></li>
-                    <li class="footer-li"><a href="" class="footer-links">Facebook</a></li>
+                    <li class="footer-li"><a href="https://www.behance.net/zertsikel/" target="blank" class="footer-links">Behance</a></li>
+                    <li class="footer-li"><a href="" class="footer-links">Telegram</a></li>
+                    <li class="footer-li"><a href="https://vk.com/zerna.design/" target="blank" class="footer-links">VK</a></li>
                 </ul>
 
                 <div class="address">

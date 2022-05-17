@@ -74,7 +74,6 @@ Template Name: portfolio
                         'posts_per_page' => 2,
                         'cat' => 5,
                         'paged' => 1,
-
                     ];
                     $loop = new WP_Query($args);
                     ?>

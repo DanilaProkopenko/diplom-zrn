@@ -6,14 +6,15 @@ Template Name: home
 <?php get_header() ?>
 <div class="wrapper">
     <div class="content">
-        <div class="slide-detect">
+        <!-- Точечки справа убрал -->
+        <!-- <div class="slide-detect">
             <ul class="slide-detect__ul">
                 <li class="slide-detect__li"></li>
                 <li class="slide-detect__li"></li>
                 <li class="slide-detect__li"></li>
                 <li class="slide-detect__li"></li>
             </ul>
-        </div>
+        </div> -->
 
         <div class="works">
             <?php
