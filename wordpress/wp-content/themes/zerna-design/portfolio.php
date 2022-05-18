@@ -17,34 +17,36 @@ Template Name: portfolio
                 <?php get_header(); ?>
 
                 <script type="text/javascript">
-                    /*AJAX*/
-                    jQuery(document).ready(function($) {
-                        //по загрузке стр вывод всех постов 
-                        getPosts(5);
-                        // по клику на выбранную категорию
-                        jQuery(".portfolio__filter__category__ul li").on("click", function() {
-                            console.log(this);
-                            getPosts(this.getAttribute("cat_id"));
-                        });
+                    // внешний js код работает только если объявить тут переменную
+                    var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+                    // /*AJAX*/
+                    // jQuery(document).ready(function($) {
+                    //     //по загрузке стр вывод всех постов 
+                    //     getPosts(5);
+                    //     // по клику на выбранную категорию
+                    //     jQuery(".portfolio__filter__category__ul li").on("click", function() {
+                    //         // console.log(this);
+                    //         getPosts(this.getAttribute("cat_id"));
+                    //     });
 
-                        // toggle li category
-                        $('#category__ul li').click(function() {
-                            // $(this).addClass('active');
-                            $(this).addClass('portfolio__filter__category__li_active').siblings().removeClass('portfolio__filter__category__li_active')
-                            // $(this).parent().children('li').not(this).removeClass('active');
-                        });
-                    });
+                    //     // toggle li category
+                    //     $('#category__ul li').click(function() {
+                    //         // $(this).addClass('active');
+                    //         $(this).addClass('portfolio__filter__category__li_active').siblings().removeClass('portfolio__filter__category__li_active')
+                    //         // $(this).parent().children('li').not(this).removeClass('active');
+                    //     });
+                    // });
 
-                    function getPosts(catid) {
-                        var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
-                        jQuery.post(ajaxUrl, {
-                                action: "more_post_ajax",
-                                category: catid
-                            })
-                            .done(function(posts) {
-                                jQuery(".pr-works").html(posts);
-                            });
-                    }
+                    // function getPosts(catid) {
+                    //     var ajaxUrl = "<?php echo admin_url('admin-ajax.php') ?>";
+                    //     jQuery.post(ajaxUrl, {
+                    //             action: "more_post_ajax",
+                    //             category: catid
+                    //         })
+                    //         .done(function(posts) {
+                    //             jQuery(".pr-works").html(posts);
+                    //         });
+                    // }
                 </script>
 
                 <div class="portfolio__filter">
@@ -71,9 +73,9 @@ Template Name: portfolio
                     <?php
                     $args = [
                         'post_type' => 'post',
-                        'posts_per_page' => 2,
+                        // 'posts_per_page' => 2,
                         'cat' => 5,
-                        'paged' => 1,
+                        // 'paged' => 1,
                     ];
                     $loop = new WP_Query($args);
                     ?>
@@ -98,17 +100,7 @@ Template Name: portfolio
                     wp_reset_postdata();
                     ?>
 
-                    <div id="row_append"></div>
 
-                </div>
-
-                <style>
-                    .load-more-btn {
-                        cursor: pointer;
-                    }
-                </style>
-                <div class="load-more-btn">
-                    <div class="btn" id="more_posts">Загрущить еще</div>
                 </div>
             </div>
 

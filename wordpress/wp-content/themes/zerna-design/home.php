@@ -52,8 +52,13 @@ Template Name: home
             wp_reset_postdata(); // Сбрасываем $post
             ?>
         </div>
+        <br>
+        
+        <?php echo do_shortcode(' [art_feedback]'); ?>
+        <?
 
-
+        add_shortcode('shortcode_name', 'shortcode_name_handler');
+        ?>
         <form action="telegram.php" method="POST" class="order-form">
             <div class="order-form__box">
                 <input type="email" name="email" placeholder="Order design" class="order-form__email">
