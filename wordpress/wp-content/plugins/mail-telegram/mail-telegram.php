@@ -22,8 +22,94 @@ Version:     1.0
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+
+// страница настроек
+add_action('admin_menu', 'myplagin_admin_page'); //Добавить новое меню в админку Wordpress
+// add_action('admin_menu', 'admin'); //Добавить новое меню в админку Wordpress
+add_option('token', 'token');
+
+// function admin()
+// {
+//     if (function_exists('add_options_page')) {
+//         add_options_page(
+//             'Mail to Telegram Options',
+//             'Mail to Telegram',
+//             8,
+//             basename(__FILE__),
+//             array(&$this, 'admin_form')
+//         );
+//     }
+// }
+// function admin_form()
+// {
+//     $token = get_option('token');
+// }
+function myplagin_admin_page()
+{
+    add_options_page('Mail to Telegram Options', 'Mail to Telegram', 8,  basename(__FILE__), 'myplagin_options_page');
+}
+
+
+function myplagin_options_page()
+{
+    //Функция создания и обработки страницы настроек плагина
+    $token = get_option('token');
+
+    if (isset($_POST['submit'])) {
+        if (
+            function_exists('current_user_can') &&
+            !current_user_can('manage_options')
+        )
+            die(_e('Hacker?', 'matel'));
+
+        if (function_exists('check_admin_referer')) {
+            check_admin_referer('matel_form');
+        }
+
+        $token = $_POST['token'];
+
+        update_option('token', $token);
+    }
+?>
+    <div class='wrap'>
+        <h2><?php _e('Mail to Telegram Settings', 'matel'); ?></h2>
+
+        <form name="matel" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=mail-telegram.php&amp;updated=true">
+
+            <!-- Имя ljusers_form используется в check_admin_referer -->
+            <?php
+            if (function_exists('wp_nonce_field')) {
+                wp_nonce_field('matel_form');
+            }
+            ?>
+
+            <table class="form-table">
+                <tr valign="top">
+                    <th scope="row"><?php _e('Telegram bot token:', 'token'); ?></th>
+
+                    <td>
+                        <input type="text" name="token" size="80" value="<?php echo $token; ?>" />
+                    </td>
+                </tr>
+
+            </table>
+
+            <input type="hidden" name="action" value="update" />
+
+            <input type="hidden" name="page_options" value="token" />
+
+            <p class="submit">
+                <input type="submit" name="submit" value="<?php _e('Save Changes') ?>" />
+            </p>
+        </form>
+    </div>
+<?
+};
+
 function art_feedback_2()
 {
+    $token = get_option('token');
+
     return '<form id="add_feedback_2">
     <input type="text" name="art_name_2" id="art_name_2" class="required art_name" placeholder="Ваше имя" value="" />
 
@@ -33,12 +119,14 @@ function art_feedback_2()
     <input type="text" name="art_submitted_2" id="art_submitted_2" value="" style="display: none !important;" />
 
     <input type="submit" id="submit-feedback_2" class="button" value="Отправить сообщение" />
+    <p>' . $token . '<p>
 </form>';
 }
 
 add_shortcode('art_feedback_2', 'art_feedback_2');
-
 add_action('wp_enqueue_scripts', 'art_feedback_2_scripts');
+
+
 function art_feedback_2_scripts()
 {
 
@@ -94,6 +182,23 @@ add_action('wp_ajax_nopriv_feedback_action_2', 'ajax_action_callback_2');
 function ajax_action_callback_2()
 {
 
+    // Данные telegram
+    // $token = "5317565362:AAEyFa8Lriv8sYINtIvCXzlRhv8lX03QxoE";
+    // $chat_id = "-798736102";
+    // $arr = array(
+    //     'Имя пользователя: ' => $name,
+    //     'Связь: ' => $phone,
+    //     'Email' => $email,
+    //     'Тема' => $subject
+    // );
+
+    // foreach ($arr as $key => $value) {
+    //     // $txt .= "<b>" . $key . "</b> " . $value . "%0A";
+    //     $txt .= "<b>" . urlencode($key) . " </b>" . urlencode($value) . "%0A";
+    // };
+
+    // $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}", "r");
+
     // Массив ошибок
     $err_message = array();
 
@@ -111,7 +216,7 @@ function ajax_action_callback_2()
     // if (empty($_POST['art_name_2']) || !isset($_POST['art_name_2'])) {
     //     $err_message['name'] = 'Пожалуйста, введите ваше имя.';
     // } else {
-        $art_name = sanitize_text_field($_POST['art_name_2']);
+    $art_name = sanitize_text_field($_POST['art_name_2']);
     // }
 
     // // Проверяем полей емайла, если пустое, то пишем сообщение в массив ошибок
@@ -120,7 +225,7 @@ function ajax_action_callback_2()
     // } elseif (!preg_match('/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i', $_POST['art_email'])) {
     //     $err_message['email_2'] = 'Адрес электронной почты некорректный.';
     // } else {
-        $art_email = sanitize_email($_POST['art_email_2']);
+    $art_email = sanitize_email($_POST['art_email_2']);
     // }
 
     // Проверяем массив ошибок, если не пустой, то передаем сообщение. Иначе отправляем письмо

@@ -54,7 +54,7 @@ Template Name: home
         </div>
         <br>
         
-        <?php // echo do_shortcode(' [art_feedback]'); ?>
+        <?php  echo do_shortcode(' [art_feedback]'); ?>
         <?php echo do_shortcode(' [art_feedback_2]'); ?>
         <?
 
