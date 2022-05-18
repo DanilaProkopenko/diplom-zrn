@@ -139,9 +139,6 @@ add_action('wp_ajax_more_post_ajax', 'more_post_ajax');
 add_shortcode('art_feedback', 'art_feedback');
 /**
  * Шорткод вывода формы
- *
- * @return string
- * @see https://wpruse.ru/?p=3224
  */
 function art_feedback()
 {
