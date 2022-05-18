@@ -27,6 +27,7 @@ Version:     1.0
 add_action('admin_menu', 'myplagin_admin_page'); //Добавить новое меню в админку Wordpress
 // add_action('admin_menu', 'admin'); //Добавить новое меню в админку Wordpress
 add_option('token', 'token');
+add_option('mail', 'mail');
 
 // function admin()
 // {
@@ -54,6 +55,7 @@ function myplagin_options_page()
 {
     //Функция создания и обработки страницы настроек плагина
     $token = get_option('token');
+    $mail = get_option('mail');
 
     if (isset($_POST['submit'])) {
         if (
@@ -67,8 +69,10 @@ function myplagin_options_page()
         }
 
         $token = $_POST['token'];
+        $mail = $_POST['mail'];
 
         update_option('token', $token);
+        update_option('mail', $mail);
     }
 ?>
     <div class='wrap'>
@@ -91,6 +95,13 @@ function myplagin_options_page()
                         <input type="text" name="token" size="80" value="<?php echo $token; ?>" />
                     </td>
                 </tr>
+                <tr valign="top">
+                    <th scope="row"><?php _e('Mail:', 'mail'); ?></th>
+
+                    <td>
+                        <input type="email" name="mail" size="80" value="<?php echo $mail; ?>" />
+                    </td>
+                </tr>
 
             </table>
 
@@ -109,6 +120,7 @@ function myplagin_options_page()
 function art_feedback_2()
 {
     $token = get_option('token');
+    $mail = get_option('mail');
 
     return '<form id="add_feedback_2">
     <input type="text" name="art_name_2" id="art_name_2" class="required art_name" placeholder="Ваше имя" value="" />
@@ -120,6 +132,7 @@ function art_feedback_2()
 
     <input type="submit" id="submit-feedback_2" class="button" value="Отправить сообщение" />
     <p>' . $token . '<p>
+    <p>' . $mail . '<p>
 </form>';
 }
 
@@ -235,7 +248,9 @@ function ajax_action_callback_2()
     } else {
 
         // Указываем адресата
-        $email_to = 'danilaprok20@gmail.com';
+        $mail = get_option('mail');
+        $email_to = $mail;
+        // $email_to = 'danilaprok20@gmail.com';
 
         // Если адресат не указан, то берем данные из настроек сайта
         // if (!$email_to) {
