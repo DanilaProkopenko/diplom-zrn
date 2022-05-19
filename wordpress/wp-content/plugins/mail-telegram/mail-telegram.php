@@ -29,6 +29,7 @@ add_action('admin_menu', 'myplagin_admin_page'); //Добавить новое �
 add_option('token', 'token');
 add_option('chatId', 'chatId');
 add_option('mail', 'mail');
+add_option('tgToggle', 'tgToggle');
 
 // function admin()
 // {
@@ -59,6 +60,10 @@ function myplagin_options_page()
     $mail = get_option('mail');
     $chatId = get_option('chatId');
 
+    // checkbox
+    $tgToggle = get_option('tgToggle');
+    $tgToggle = $tgToggle ? $tgToggle['checkbox'] : null;
+
     if (isset($_POST['submit'])) {
         if (
             function_exists('current_user_can') &&
@@ -72,11 +77,12 @@ function myplagin_options_page()
 
         $token = $_POST['token'];
         $mail = $_POST['mail'];
-        $chatId = $_POST['chatId'];
+        $tgToggle = $_POST['tgToggle'];
 
         update_option('token', $token);
         update_option('mail', $mail);
         update_option('chatId', $chatId);
+        update_option('tgToggle', $tgToggle);
     }
 ?>
     <div class='wrap'>
@@ -111,6 +117,7 @@ function myplagin_options_page()
 
                     <td>
                         <input type="text" name="chatId" size="80" value="<?php echo $chatId; ?>" />
+                        <label><input type="checkbox" name="tgToggle[checkbox]" value="1" <?php checked(1, $tgToggle) ?> /> Отправка в телеграм
                     </td>
                 </tr>
 
@@ -133,6 +140,7 @@ function art_feedback_2()
     $token = get_option('token');
     $mail = get_option('mail');
     $chatId = get_option('chatId');
+    $tgToggle = get_option('tgToggle');
 
     return '<form id="add_feedback_2">
     <input type="text" name="art_name_2" id="art_name_2" class="required art_name" placeholder="Ваше имя" value="" />
@@ -143,9 +151,8 @@ function art_feedback_2()
     <input type="text" name="art_submitted_2" id="art_submitted_2" value="" style="display: none !important;" />
 
     <input type="submit" id="submit-feedback_2" class="button" value="Отправить сообщение" />
-    <p>' . $token . '<p>
     <p>' . $mail . '<p>
-    <p>' . $chatId . '<p>
+    <p>' . var_dump($tgToggle) . '<p>
 </form>';
 }
 
@@ -171,16 +178,7 @@ function art_feedback_2_scripts()
 
     // Подключаем файл скрипта
     wp_enqueue_script('feedback_2');
-    // wp_enqueue_script(
-    //     'feedback_2',
-    //     get_stylesheet_directory_uri() . 'assets/js/feedback.js',
-    //     get_template_directory_uri() . '/js/feedback_2.js',
-    //     array('jquery'),
-    //     1.0,
-    //     true
-    // );
-
-    // Задаем данные обьекта ajax
+ 
     wp_localize_script(
         'feedback_2',
         'feedback_2_object',
@@ -190,14 +188,6 @@ function art_feedback_2_scripts()
         )
     );
 }
-
-// function load_feedback_2()
-// {
-//     wp_register_script('feedback_2', plugins_url('/feedback_2.js', __FILE__));
-
-//     wp_enqueue_script('feedback_2');
-// }
-
 
 
 add_action('wp_ajax_feedback_action_2', 'ajax_action_callback_2');
@@ -246,6 +236,7 @@ function ajax_action_callback_2()
 
         // Указываем адресата
         $mail = get_option('mail');
+        $tgToggle = get_option('tgToggle');
         $email_to = $mail;
         // $email_to = 'danilaprok20@gmail.com';
 
@@ -273,13 +264,14 @@ function ajax_action_callback_2()
         $text = " ";
         foreach ($arr as $key => $value) {
             $text .= "<b>" . $key . "</b> " . $value . "%0A";
-            // $txt .= "<b>" . urlencode($key) . " </b>" . urlencode($value) . "%0A";
         };
 
-        // $text = "message";
-        // $text = "<b>Имя пользователя<b>" . $art_name . "> \n <b>Email<b> " . $art_email . " \n <b>Тема<b> " . $art_subject . "";
+     
+        // отправка в тг, если checkbox active
+        if($tgToggle){
+            $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$text}", "r");
+        }
 
-        $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$text}", "r");
 
         // Отправляем письмо
         wp_mail($email_to, $art_subject, $body, $headers);
