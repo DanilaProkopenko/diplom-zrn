@@ -92,4 +92,6 @@ jQuery(document).ready(function ($) {
     };
     // Отправка формы
     add_small_form.ajaxForm(smallOptions);
+
+    
 });
