@@ -6,7 +6,7 @@ Author:      Danila
 Version:     1.0 
 */
 
-/*  Copyright 2008  Jenyay  (email : jenyay.ilin@gmail.com)
+/*  Copyright 2020  Danila  (email : danilaprok20@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,6 +27,7 @@ Version:     1.0
 add_action('admin_menu', 'myplagin_admin_page'); //Добавить новое меню в админку Wordpress
 // add_action('admin_menu', 'admin'); //Добавить новое меню в админку Wordpress
 add_option('token', 'token');
+add_option('chatId', 'chatId');
 add_option('mail', 'mail');
 
 // function admin()
@@ -56,6 +57,7 @@ function myplagin_options_page()
     //Функция создания и обработки страницы настроек плагина
     $token = get_option('token');
     $mail = get_option('mail');
+    $chatId = get_option('chatId');
 
     if (isset($_POST['submit'])) {
         if (
@@ -70,9 +72,11 @@ function myplagin_options_page()
 
         $token = $_POST['token'];
         $mail = $_POST['mail'];
+        $chatId = $_POST['chatId'];
 
         update_option('token', $token);
         update_option('mail', $mail);
+        update_option('chatId', $chatId);
     }
 ?>
     <div class='wrap'>
@@ -102,6 +106,13 @@ function myplagin_options_page()
                         <input type="email" name="mail" size="80" value="<?php echo $mail; ?>" />
                     </td>
                 </tr>
+                <tr valign="top">
+                    <th scope="row"><?php _e('Chat Id:', 'chatId'); ?></th>
+
+                    <td>
+                        <input type="text" name="chatId" size="80" value="<?php echo $chatId; ?>" />
+                    </td>
+                </tr>
 
             </table>
 
@@ -121,6 +132,7 @@ function art_feedback_2()
 {
     $token = get_option('token');
     $mail = get_option('mail');
+    $chatId = get_option('chatId');
 
     return '<form id="add_feedback_2">
     <input type="text" name="art_name_2" id="art_name_2" class="required art_name" placeholder="Ваше имя" value="" />
@@ -133,6 +145,7 @@ function art_feedback_2()
     <input type="submit" id="submit-feedback_2" class="button" value="Отправить сообщение" />
     <p>' . $token . '<p>
     <p>' . $mail . '<p>
+    <p>' . $chatId . '<p>
 </form>';
 }
 
@@ -195,22 +208,6 @@ add_action('wp_ajax_nopriv_feedback_action_2', 'ajax_action_callback_2');
 function ajax_action_callback_2()
 {
 
-    // Данные telegram
-    // $token = "5317565362:AAEyFa8Lriv8sYINtIvCXzlRhv8lX03QxoE";
-    // $chat_id = "-798736102";
-    // $arr = array(
-    //     'Имя пользователя: ' => $name,
-    //     'Связь: ' => $phone,
-    //     'Email' => $email,
-    //     'Тема' => $subject
-    // );
-
-    // foreach ($arr as $key => $value) {
-    //     // $txt .= "<b>" . $key . "</b> " . $value . "%0A";
-    //     $txt .= "<b>" . urlencode($key) . " </b>" . urlencode($value) . "%0A";
-    // };
-
-    // $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}", "r");
 
     // Массив ошибок
     $err_message = array();
@@ -259,6 +256,29 @@ function ajax_action_callback_2()
         $art_subject = "Test";
         $body    = "Имя: $art_name \nEmail: $art_email \n\nС";
         $headers = 'From: ' . $art_name . ' <' . $email_to . '>' . "\r\n" . 'Reply-To: ' . $email_to;
+        
+        // Данные telegram
+        // $token = "5317565362:AAEyFa8Lriv8sYINtIvCXzlRhv8lX03QxoE";
+        // $chat_id = "-798736102";
+        $token = get_option('token');
+        $chatId = get_option('chatId');
+        $chat_id = $chatId;
+        $arr = array(
+            'Имя пользователя: ' => $art_name,
+            // 'Связь: ' => $phone,
+            'Email' => $art_email,
+            'Тема' => $art_subject
+        );
+
+        foreach ($arr as $key => $value) {
+            $txt = "<b>" . $key . "</b> " . $value . "%0A";
+            // $txt .= "<b>" . urlencode($key) . " </b>" . urlencode($value) . "%0A";
+            $text = "<b>" . urlencode($key) . " </b>" . urlencode($value) . "%0A";
+        };
+
+        // $txt = "message";
+
+        $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$text}", "r");
 
         // Отправляем письмо
         wp_mail($email_to, $art_subject, $body, $headers);
@@ -266,6 +286,7 @@ function ajax_action_callback_2()
         // Отправляем сообщение об успешной отправке
         $message_success = 'Собщение отправлено. В ближайшее время я свяжусь с вами.';
         wp_send_json_success($message_success);
+
     }
 
     // На всякий случай убиваем еще раз процесс ajax
