@@ -256,7 +256,7 @@ function ajax_action_callback_2()
         $art_subject = "Test";
         $body    = "Имя: $art_name \nEmail: $art_email \n\nС";
         $headers = 'From: ' . $art_name . ' <' . $email_to . '>' . "\r\n" . 'Reply-To: ' . $email_to;
-        
+
         // Данные telegram
         // $token = "5317565362:AAEyFa8Lriv8sYINtIvCXzlRhv8lX03QxoE";
         // $chat_id = "-798736102";
@@ -270,13 +270,14 @@ function ajax_action_callback_2()
             'Тема' => $art_subject
         );
 
+        $text = " ";
         foreach ($arr as $key => $value) {
-            $txt = "<b>" . $key . "</b> " . $value . "%0A";
+            $text .= "<b>" . $key . "</b> " . $value . "%0A";
             // $txt .= "<b>" . urlencode($key) . " </b>" . urlencode($value) . "%0A";
-            $text = "<b>" . urlencode($key) . " </b>" . urlencode($value) . "%0A";
         };
 
-        // $txt = "message";
+        // $text = "message";
+        // $text = "<b>Имя пользователя<b>" . $art_name . "> \n <b>Email<b> " . $art_email . " \n <b>Тема<b> " . $art_subject . "";
 
         $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$text}", "r");
 
@@ -286,7 +287,6 @@ function ajax_action_callback_2()
         // Отправляем сообщение об успешной отправке
         $message_success = 'Собщение отправлено. В ближайшее время я свяжусь с вами.';
         wp_send_json_success($message_success);
-
     }
 
     // На всякий случай убиваем еще раз процесс ajax
