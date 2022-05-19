@@ -30,23 +30,8 @@ add_option('token', 'token');
 add_option('chatId', 'chatId');
 add_option('mail', 'mail');
 add_option('tgToggle', 'tgToggle');
+add_option('mailToggle', 'mailToggle');
 
-// function admin()
-// {
-//     if (function_exists('add_options_page')) {
-//         add_options_page(
-//             'Mail to Telegram Options',
-//             'Mail to Telegram',
-//             8,
-//             basename(__FILE__),
-//             array(&$this, 'admin_form')
-//         );
-//     }
-// }
-// function admin_form()
-// {
-//     $token = get_option('token');
-// }
 function myplagin_admin_page()
 {
     add_options_page('Mail to Telegram Options', 'Mail to Telegram', 8,  basename(__FILE__), 'myplagin_options_page');
@@ -64,6 +49,9 @@ function myplagin_options_page()
     $tgToggle = get_option('tgToggle');
     $tgToggle = $tgToggle ? $tgToggle['checkbox'] : null;
 
+    $mailToggle = get_option('mailToggle');
+    $mailToggle = $mailToggle ? $mailToggle['checkbox'] : null;
+
     if (isset($_POST['submit'])) {
         if (
             function_exists('current_user_can') &&
@@ -78,11 +66,13 @@ function myplagin_options_page()
         $token = $_POST['token'];
         $mail = $_POST['mail'];
         $tgToggle = $_POST['tgToggle'];
+        $mailToggle = $_POST['mailToggle'];
 
         update_option('token', $token);
         update_option('mail', $mail);
         update_option('chatId', $chatId);
         update_option('tgToggle', $tgToggle);
+        update_option('mailToggle', $mailToggle);
     }
 ?>
     <div class='wrap'>
@@ -99,25 +89,32 @@ function myplagin_options_page()
 
             <table class="form-table">
                 <tr valign="top">
-                    <th scope="row"><?php _e('Telegram bot token:', 'token'); ?></th>
-
-                    <td>
-                        <input type="text" name="token" size="80" value="<?php echo $token; ?>" />
-                    </td>
-                </tr>
-                <tr valign="top">
-                    <th scope="row"><?php _e('Mail:', 'mail'); ?></th>
+                    <th scope="row"><?php _e('Почта получателя:', 'mail'); ?></th>
 
                     <td>
                         <input type="email" name="mail" size="80" value="<?php echo $mail; ?>" />
                     </td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row"><?php _e('Chat Id:', 'chatId'); ?></th>
+                    <th scope="row"><?php _e('Token телеграм бота:', 'token'); ?></th>
+
+                    <td>
+                        <input type="text" name="token" size="80" value="<?php echo $token; ?>" />
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row"><?php _e('Id чата получателя:', 'chatId'); ?></th>
 
                     <td>
                         <input type="text" name="chatId" size="80" value="<?php echo $chatId; ?>" />
-                        <label><input type="checkbox" name="tgToggle[checkbox]" value="1" <?php checked(1, $tgToggle) ?> /> Отправка в телеграм
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row"><?php _e('Отправка:', ''); ?></th>
+
+                    <td>
+                        <label><input type="checkbox" name="mailToggle[checkbox]" value="1" <?php checked(1, $mailToggle) ?> /> Mail
+                            <label><input type="checkbox" name="tgToggle[checkbox]" value="1" <?php checked(1, $tgToggle) ?> /> Telegram
                     </td>
                 </tr>
 
@@ -141,6 +138,7 @@ function art_feedback_2()
     $mail = get_option('mail');
     $chatId = get_option('chatId');
     $tgToggle = get_option('tgToggle');
+    $mailToggle = get_option('mailToggle');
 
     return '<form id="add_feedback_2">
     <input type="text" name="art_name_2" id="art_name_2" class="required art_name" placeholder="Ваше имя" value="" />
@@ -153,10 +151,30 @@ function art_feedback_2()
     <input type="submit" id="submit-feedback_2" class="button" value="Отправить сообщение" />
     <p>' . $mail . '<p>
     <p>' . var_dump($tgToggle) . '<p>
+    <p>' . var_dump($mailToggle) . '<p>
+</form>';
+}
+function small_form()
+{
+    $token = get_option('token');
+    $mail = get_option('mail');
+    $chatId = get_option('chatId');
+    $tgToggle = get_option('tgToggle');
+    $mailToggle = get_option('mailToggle');
+
+    
+    return '<form id="small_form" class="order-form">
+    <div class="order-form__box">
+        <input type="email" name="s_email" id="s_email" placeholder="Order design" class="order-form__email">
+        <input type="submit" id="submit-small" class="order-form__submit" value="">
+        <br><label for="s_email" class="order-form__label">Send us your email to discuss the
+            project.</label>
+    </div>
 </form>';
 }
 
 add_shortcode('art_feedback_2', 'art_feedback_2');
+add_shortcode('small_form', 'small_form');
 add_action('wp_enqueue_scripts', 'art_feedback_2_scripts');
 
 
@@ -178,7 +196,7 @@ function art_feedback_2_scripts()
 
     // Подключаем файл скрипта
     wp_enqueue_script('feedback_2');
- 
+
     wp_localize_script(
         'feedback_2',
         'feedback_2_object',
@@ -217,17 +235,20 @@ function ajax_action_callback_2()
     //     $err_message['name'] = 'Пожалуйста, введите ваше имя.';
     // } else {
     $art_name = sanitize_text_field($_POST['art_name_2']);
+
     // }
 
-    // // Проверяем полей емайла, если пустое, то пишем сообщение в массив ошибок
-    // if (empty($_POST['art_email_2']) || !isset($_POST['art_email_2'])) {
-    //     $err_message['email_2'] = 'Пожалуйста, введите адрес вашей электронной почты.';
-    // } elseif (!preg_match('/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i', $_POST['art_email'])) {
-    //     $err_message['email_2'] = 'Адрес электронной почты некорректный.';
-    // } else {
-    $art_email = sanitize_email($_POST['art_email_2']);
-    // }
+    // Проверяем полей емайла, если пустое, то пишем сообщение в массив ошибок
+    if (empty($_POST['s_email']) || !isset($_POST['s_email'])) {
+        $err_message['email_2'] = 'Пожалуйста, введите адрес вашей электронной почты.';
+    } elseif (!preg_match('/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i', $_POST['s_email'])) {
+        $err_message['email_2'] = 'Адрес электронной почты некорректный.';
+    } else {
+    $art_email = sanitize_email($_POST['s_email']);
+    }
 
+    // input для малой формы
+    $s_email = sanitize_text_field($_POST['s_email']);
     // Проверяем массив ошибок, если не пустой, то передаем сообщение. Иначе отправляем письмо
     if ($err_message) {
 
@@ -237,6 +258,7 @@ function ajax_action_callback_2()
         // Указываем адресата
         $mail = get_option('mail');
         $tgToggle = get_option('tgToggle');
+        $mailToggle = get_option('mailToggle');
         $email_to = $mail;
         // $email_to = 'danilaprok20@gmail.com';
 
@@ -245,19 +267,21 @@ function ajax_action_callback_2()
         //     $email_to = get_option('admin_email');
         // }
         $art_subject = "Test";
-        $body    = "Имя: $art_name \nEmail: $art_email \n\nС";
+        $body    = "Имя: $art_name \nEmail: $s_email \n\nС";
+        // $body    = "Имя: $art_name \nEmail: $art_email \n\nС";
         $headers = 'From: ' . $art_name . ' <' . $email_to . '>' . "\r\n" . 'Reply-To: ' . $email_to;
 
         // Данные telegram
-        // $token = "5317565362:AAEyFa8Lriv8sYINtIvCXzlRhv8lX03QxoE";
-        // $chat_id = "-798736102";
+        // $token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+        // $chat_id = "000000000000";
         $token = get_option('token');
         $chatId = get_option('chatId');
         $chat_id = $chatId;
         $arr = array(
             'Имя пользователя: ' => $art_name,
             // 'Связь: ' => $phone,
-            'Email' => $art_email,
+            // 'Email' => $art_email,
+            'Email' => $s_email,
             'Тема' => $art_subject
         );
 
@@ -266,15 +290,17 @@ function ajax_action_callback_2()
             $text .= "<b>" . $key . "</b> " . $value . "%0A";
         };
 
-     
+
         // отправка в тг, если checkbox active
-        if($tgToggle){
+        if ($tgToggle) {
             $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$text}", "r");
         }
 
 
         // Отправляем письмо
-        wp_mail($email_to, $art_subject, $body, $headers);
+        if ($mailToggle) {
+            wp_mail($email_to, $art_subject, $body, $headers);
+        }
 
         // Отправляем сообщение об успешной отправке
         $message_success = 'Собщение отправлено. В ближайшее время я свяжусь с вами.';

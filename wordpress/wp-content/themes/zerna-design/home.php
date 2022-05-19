@@ -54,20 +54,9 @@ Template Name: home
         </div>
         <br>
         
-        <?php  echo do_shortcode(' [art_feedback]'); ?>
-        <?php echo do_shortcode(' [art_feedback_2]'); ?>
-        <?
-
-        add_shortcode('shortcode_name', 'shortcode_name_handler');
-        ?>
-        <form action="telegram.php" method="POST" class="order-form">
-            <div class="order-form__box">
-                <input type="email" name="email" placeholder="Order design" class="order-form__email">
-                <input type="submit" class="order-form__submit" value="">
-                <br><label for="email" class="order-form__label">Send us your email to discuss the
-                    project.</label>
-            </div>
-        </form>
+        <?php // echo do_shortcode(' [art_feedback_2]'); ?>
+        <?php echo do_shortcode(' [small_form]'); ?>
+        
     </div>
 </div>
 
