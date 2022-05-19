@@ -30,8 +30,8 @@ jQuery(document).ready(function ($) {
             } else {
                 // Если поля не заполнены, выводим сообщения и меняем надпись на кнопке
                 $.each(request.data, function (key, val) {
-                    $('.art_' + key).addClass('error');
-                    $('.art_' + key).before('<span class="error-' + key + '">' + val + '</span>');
+                    // $('.art_' + key).addClass('error');
+                    // $('.art_' + key).before('<span class="error-' + key + '">' + val + '</span>');
                 });
                 $('#submit-feedback_2').val('Что-то пошло не так ART...');
 
@@ -43,55 +43,8 @@ jQuery(document).ready(function ($) {
             $('#submit-feedback_2').val('Что-то пошло не так...');
         }
     };
-    // Отправка формы
-    add_form_2.ajaxForm(options);
 
-    var add_small_form = $('#small_form');
+      // Отправка формы
+      add_form_2.ajaxForm(options);
 
-    // Сброс значений полей
-    $('#small_form input').on('blur', function () {
-        $('#small_form input').removeClass('error');
-        $('.error-name,.error-email,.error-comments,.message-success').remove();
-        $('#submit-small').val('Отправить сообщение');
-    });
-
-    // Отправка значений полей
-    var smallOptions = {
-        url: feedback_2_object.url,
-        data: {
-            action: 'feedback_action_2',
-            nonce: feedback_2_object.nonce
-        },
-        type: 'POST',
-        dataType: 'json',
-        beforeSubmit: function (xhr) {
-            // При отправке формы меняем надпись на кнопке
-            $('#submit-small').val('Отправляем...');
-        },
-        success: function (request, xhr, status, error) {
-
-            if (request.success === true) {
-                // Если все поля заполнены, отправляем данные и меняем надпись на кнопке
-                add_small_form.after('<div class="message-success">' + request.data + '</div>').slideDown();
-                $('#submit-small').val('Отправить сообщение');
-            } else {
-                // Если поля не заполнены, выводим сообщения и меняем надпись на кнопке
-                $.each(request.data, function (key, val) {
-                    $('.art_' + key).addClass('error');
-                    $('.art_' + key).before('<span class="error-' + key + '">' + val + '</span>');
-                });
-                $('#submit-small').val('Что-то пошло не так ART...');
-
-            }
-            // При успешной отправке сбрасываем значения полей
-            $('#small_form')[0].reset();
-        },
-        error: function (request, status, error) {
-            $('#submit-small').val('Что-то пошло не так...');
-        }
-    };
-    // Отправка формы
-    add_small_form.ajaxForm(smallOptions);
-
-    
 });

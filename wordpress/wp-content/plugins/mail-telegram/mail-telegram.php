@@ -175,8 +175,8 @@ function big_form()
             Write us about your project
         </div>
         <div class="contact-form__input-box">
-            <input type="email" name="b_email" class="b_email input-email" placeholder="email">
-            <input type="text" name="b_name" class="b_name input-name" placeholder="name">
+            <input type="email" name="b_email" class="b_email input-email" placeholder="email*">
+            <input type="text" name="b_name" class="b_name input-name" placeholder="name*">
             <input type="text" name="b_messanger" class="b_messanger input-number-messanger" placeholder="t.number/messanger">
             <input type="text" name="b_about" class="b_about input-about" placeholder="about">
             <input type="submit" id="submit-big" class="submit-btn" value="Send brif">
@@ -193,8 +193,9 @@ function big_form()
 add_shortcode('art_feedback_2', 'art_feedback_2');
 add_shortcode('small_form', 'small_form');
 add_shortcode('big_form', 'big_form');
-add_action('wp_enqueue_scripts', 'art_feedback_2_scripts');
+add_action('wp_enqueue_scripts', 'art_feedback_small_scripts');
 add_action('wp_enqueue_scripts', 'feedback_big_scripts');
+add_action('wp_enqueue_scripts', 'feedback_small_scripts');
 
 function feedback_big_scripts(){
     // Регистрируем скрипт
@@ -222,8 +223,34 @@ function feedback_big_scripts(){
         )
     );
 }
+function feedback_small_scripts(){
+    // Регистрируем скрипт
+    wp_register_script(
+        'feedback_small',
+        plugins_url('/js/feedback_small.js', __FILE__),
+        array('jquery'),
+        2.0,
+        true
+    );
 
-function art_feedback_2_scripts()
+
+    // Обрабтка полей формы
+    wp_enqueue_script('jquery-form');
+
+    // Подключаем файл скрипта
+    wp_enqueue_script('feedback_small');
+
+    wp_localize_script(
+        'feedback_small',
+        'feedback_small_object',
+        array(
+            'url'   => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('feedback-small-nonce'),
+        )
+    );
+}
+
+function art_feedback_small_scripts()
 {
 
     // Регистрируем скрипт
@@ -257,6 +284,8 @@ add_action('wp_ajax_feedback_action_2', 'ajax_action_callback_2');
 add_action('wp_ajax_nopriv_feedback_action_2', 'ajax_action_callback_2');
 add_action('wp_ajax_feedback_action_big', 'ajax_action_callback_big');
 add_action('wp_ajax_nopriv_feedback_action_big', 'ajax_action_callback_big');
+add_action('wp_ajax_feedback_action_small', 'ajax_action_callback_small');
+add_action('wp_ajax_nopriv_feedback_action_small', 'ajax_action_callback_small');
 /**
  * Обработка скрипта
  */
@@ -284,13 +313,13 @@ function ajax_action_callback_big()
     //     wp_die('Пошел нахрен, мальчик!(c)');
     // }
 
-    // // Проверяем полей имени, если пустое, то пишем сообщение в массив ошибок
-    // if (empty($_POST['art_name_2']) || !isset($_POST['art_name_2'])) {
-    //     $err_message['name'] = 'Пожалуйста, введите ваше имя.';
-    // } else {
-    $art_name = sanitize_text_field($_POST['art_name_2']);
+    // Проверяем полей имени, если пустое, то пишем сообщение в массив ошибок
+    if (empty($_POST['b_name']) || !isset($_POST['b_name'])) {
+        $err_message['name'] = 'Пожалуйста, введите ваше имя.';
+    } else {
+    $b_name = sanitize_text_field($_POST['b_name']);
 
-    // }
+    }
 
     // Проверяем полей емайла, если пустое, то пишем сообщение в массив ошибок
     if (empty($_POST['b_email']) || !isset($_POST['b_email'])) {
@@ -308,20 +337,107 @@ function ajax_action_callback_big()
     } else {
 
         // Указываем адресата
-        $mail = get_option('mail');
+        $admin_mail = get_option('mail');
+        $email_to = $admin_mail;
         $tgToggle = get_option('tgToggle');
         $mailToggle = get_option('mailToggle');
-        $email_to = $mail;
+        // $email_to = 'danilaprok20@gmail.com';
+
+        // Если адресат не указан, то берем данные из настроек сайта
+        if (!$email_to) {
+            $email_to = get_option('admin_email');
+        }
+        $b_subject = "ZERNA.design - desgin";
+        $body    = "Name: $b_name \nEmail: $b_email \nt.number/messanger: $b_messanger \nAbout: $b_about \n\n";
+        // $body    = "Имя: $art_name \nEmail: $art_email \n\nС";
+        $headers = 'From: ' . $b_name . ' <' . $email_to . '>' . "\r\n" . 'Reply-To: ' . $email_to;
+
+        // Данные telegram
+        $token = get_option('token');
+        $chatId = get_option('chatId');
+        $chat_id = $chatId;
+        $arr = array(
+            'Name: ' => $b_name,
+            't.number/messanger: ' => $b_messanger,
+            'Email' => $b_email,
+            'About' => $b_about,
+        );
+
+        $text = " ";
+        foreach ($arr as $key => $value) {
+            $text .= "<b>" . $key . "</b> " . $value . "%0A";
+        };
+
+
+        // отправка в тг, если checkbox active
+        if ($tgToggle) {
+            $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$text}", "r");
+        }
+
+
+        // Отправляем письмо, если checkbox active
+        if ($mailToggle) {
+            wp_mail($email_to, $b_subject, $body, $headers);
+        }
+
+        // Отправляем сообщение об успешной отправке
+        $message_success = ' ';
+        // $message_success = 'Собщение отправлено. В ближайшее время я свяжусь с вами.';
+        wp_send_json_success($message_success);
+    }
+
+    // На всякий случай убиваем еще раз процесс ajax
+    wp_die();
+}
+function ajax_action_callback_small()
+{
+
+
+    // Массив ошибок
+
+
+    // Проверяем nonce. Если проверка не прошла, то блокируем отправку
+    // if (!wp_verify_nonce($_POST['nonce'], 'feedback_2-nonce')) {
+    //     wp_die('Данные отправлены с левого адреса');
+    // }
+
+    // Проверяем на спам. Если скрытое поле заполнено или снят чек, то блокируем отправку
+    // if (false === $_POST['art_anticheck_2'] || !empty($_POST['art_submitted_2'])) {
+    //     wp_die('Пошел нахрен, мальчик!(c)');
+    // }
+
+    //sanitize_text_field($_POST['art_name_2']);
+
+    // }
+
+    // Проверяем полей емайла, если пустое, то пишем сообщение в массив ошибок
+    if (empty($_POST['s_email']) || !isset($_POST['s_email'])) {
+        $err_message['email_2'] = 'Пожалуйста, введите адрес вашей электронной почты.';
+    } elseif (!preg_match('/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i', $_POST['s_email'])) {
+        $err_message['email_2'] = 'Адрес электронной почты некорректный.';
+    } else {
+        $s_email = sanitize_email($_POST['s_email']);
+    }
+
+    // Проверяем массив ошибок, если не пустой, то передаем сообщение. Иначе отправляем письмо
+    if ($err_message) {
+        wp_send_json_error($err_message);
+    } else {
+
+        // Указываем адресата
+        $admin_mail = get_option('mail');
+        $tgToggle = get_option('tgToggle');
+        $mailToggle = get_option('mailToggle');
+        $email_to = $admin_mail;
         // $email_to = 'danilaprok20@gmail.com';
 
         // Если адресат не указан, то берем данные из настроек сайта
         // if (!$email_to) {
         //     $email_to = get_option('admin_email');
         // }
-        $art_subject = "Test";
-        $body    = "Имя: $art_name \nEmail: $b_email \n\nС";
-        // $body    = "Имя: $art_name \nEmail: $art_email \n\nС";
-        $headers = 'From: ' . $art_name . ' <' . $email_to . '>' . "\r\n" . 'Reply-To: ' . $email_to;
+        $s_subject = "ZERNA.design - desgin";
+        $body    = "Email: $s_email \n";
+        $headers = 'From: ' . $s_email . ' <' . $email_to . '>' . "\r\n" . 'Reply-To: ' . $email_to;
 
         // Данные telegram
         // $token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
@@ -330,11 +446,7 @@ function ajax_action_callback_big()
         $chatId = get_option('chatId');
         $chat_id = $chatId;
         $arr = array(
-            'Имя пользователя: ' => $art_name,
-            // 'Связь: ' => $phone,
-            // 'Email' => $art_email,
-            'Email' => $b_email,
-            'Тема' => $art_subject
+            'Email' => $s_email,
         );
 
         $text = " ";
@@ -351,7 +463,7 @@ function ajax_action_callback_big()
 
         // Отправляем письмо
         if ($mailToggle) {
-            wp_mail($email_to, $art_subject, $body, $headers);
+            wp_mail($email_to, $s_subject, $body, $headers);
         }
 
         // Отправляем сообщение об успешной отправке
@@ -380,11 +492,7 @@ function ajax_action_callback_2()
     //     wp_die('Пошел нахрен, мальчик!(c)');
     // }
 
-    // // Проверяем полей имени, если пустое, то пишем сообщение в массив ошибок
-    // if (empty($_POST['art_name_2']) || !isset($_POST['art_name_2'])) {
-    //     $err_message['name'] = 'Пожалуйста, введите ваше имя.';
-    // } else {
-    $art_name = sanitize_text_field($_POST['art_name_2']);
+    //sanitize_text_field($_POST['art_name_2']);
 
     // }
 
@@ -394,7 +502,7 @@ function ajax_action_callback_2()
     } elseif (!preg_match('/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i', $_POST['s_email'])) {
         $err_message['email_2'] = 'Адрес электронной почты некорректный.';
     } else {
-        $art_email = sanitize_email($_POST['s_email']);
+        $s_email = sanitize_email($_POST['s_email']);
     }
 
     // input для малой формы
@@ -417,9 +525,9 @@ function ajax_action_callback_2()
         //     $email_to = get_option('admin_email');
         // }
         $art_subject = "Test";
-        $body    = "Имя: $art_name \nEmail: $s_email \n\nС";
+        $body    = "Имя: $s_email \nEmail: $s_email \n\nС";
         // $body    = "Имя: $art_name \nEmail: $art_email \n\nС";
-        $headers = 'From: ' . $art_name . ' <' . $email_to . '>' . "\r\n" . 'Reply-To: ' . $email_to;
+        $headers = 'From: ' . $s_email . ' <' . $email_to . '>' . "\r\n" . 'Reply-To: ' . $email_to;
 
         // Данные telegram
         // $token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
@@ -428,7 +536,7 @@ function ajax_action_callback_2()
         $chatId = get_option('chatId');
         $chat_id = $chatId;
         $arr = array(
-            'Имя пользователя: ' => $art_name,
+            'Имя пользователя: ' => $s_email,
             // 'Связь: ' => $phone,
             // 'Email' => $art_email,
             'Email' => $s_email,

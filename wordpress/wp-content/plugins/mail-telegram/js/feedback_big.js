@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
         dataType: 'json',
         beforeSubmit: function (xhr) {
             // При отправке формы меняем надпись на кнопке
-            $('#submit-big').val('Sending...');
+            $('#submit-big').val('Sending');
         },
         success: function (request, xhr, status, error) {
 
@@ -33,14 +33,14 @@ jQuery(document).ready(function ($) {
                     $('.b_' + key).addClass('error');
                     $('.b_' + key).before('<span class="error-' + key + '">' + val + '</span>');
                 });
-                $('#submit-big').val('Error .b_...');
+                $('#submit-big').val('Fill fields');
 
             }
             // При успешной отправке сбрасываем значения полей
             $('#bid_form')[0].reset();
         },
         error: function (request, status, error) {
-            $('#submit-big').val('Error...');
+            $('#submit-big').val('Error');
         }
     };
     // Отправка формы
