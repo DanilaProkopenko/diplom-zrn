@@ -6,7 +6,8 @@ jQuery(document).ready(function ($) {
     $('#small_form input').on('blur', function () {
         $('#small_form input').removeClass('error');
         $('.error-name,.error-email,.error-comments,.message-success').remove();
-        $('#submit-small').val('Отправить сообщение');
+        // $('#submit-small').val('Отправить сообщение');
+        $('#submit-small').val(' ');
     });
 
     // Отправка значений полей
@@ -34,7 +35,9 @@ jQuery(document).ready(function ($) {
                 // Если поля не заполнены, выводим сообщения и меняем надпись на кнопке
                 $.each(request.data, function (key, val) {
                     $('.s_' + key).addClass('error');
-                    $('.s_' + key).before('<span class="error-' + key + '">' + val + '</span>');
+                    // $('.s_' + key).before('<span class="error-' + key + '">' + val + '</span>');
+                    $('.s_' + key).before('<div class="error-message error-' + key + '">' + val + '</div>');
+                    
                 });
                 // $('#submit-small').val('Что-то пошло не так ART...');
                 $('#submit-small').val(' ');

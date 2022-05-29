@@ -31,7 +31,8 @@ jQuery(document).ready(function ($) {
                 // Если поля не заполнены, выводим сообщения и меняем надпись на кнопке
                 $.each(request.data, function (key, val) {
                     $('.b_' + key).addClass('error');
-                    $('.b_' + key).before('<span class="error-' + key + '">' + val + '</span>');
+                    // $('.b_' + key).before('<span class="error-' + key + '">' + val + '</span>');
+                    $('.b_' + key).before('<div class="error-message error-' + key + '">' + val + '</div>');
                 });
                 $('#submit-big').val('Fill fields');
 
