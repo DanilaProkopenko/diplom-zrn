@@ -66,6 +66,7 @@ function myplagin_options_page()
 
         $token = $_POST['token'];
         $mail = $_POST['mail'];
+        $chatId = $_POST['chatId'];
         $tgToggle = $_POST['tgToggle'];
         $mailToggle = $_POST['mailToggle'];
 
@@ -158,14 +159,16 @@ function art_feedback_2()
 
 function small_form()
 {
-    return '<form id="small_form" class="order-form">
-    <div class="order-form__box">
-        <input type="email" name="s_email" id="s_email" placeholder="Order design" class="order-form__email">
-        <input type="submit" id="submit-small" class="order-form__submit" value="">
-        <br><label for="s_email" class="order-form__label">Send us your email to discuss the
-            project.</label>
-    </div>
-</form>';
+?>
+    <form id="small_form" class="order-form">
+        <div class="order-form__box">
+            <input type="email" name="s_email" id="s_email" required placeholder="Order design" class="order-form__email">
+            <input type="submit" id="submit-small" class="order-form__submit" value="">
+            <br><label for="s_email" class="order-form__label">Send us your email to discuss the
+                project.</label>
+        </div>
+    </form>
+<?
 }
 function big_form()
 {
@@ -175,8 +178,8 @@ function big_form()
             Write us about your project
         </div>
         <div class="contact-form__input-box">
-            <input type="email" name="b_email" class="b_email input-email" placeholder="email*">
-            <input type="text" name="b_name" class="b_name input-name" placeholder="name*">
+            <input type="email" name="b_email" class="b_email input-email" required placeholder="email*">
+            <input type="text" name="b_name" class="b_name input-name" required placeholder="name*">
             <input type="text" name="b_messanger" class="b_messanger input-number-messanger" placeholder="t.number/messanger">
             <input type="text" name="b_about" class="b_about input-about" placeholder="about">
             <input type="submit" id="submit-big" class="submit-btn" value="Send brif">
@@ -197,7 +200,8 @@ add_action('wp_enqueue_scripts', 'art_feedback_small_scripts');
 add_action('wp_enqueue_scripts', 'feedback_big_scripts');
 add_action('wp_enqueue_scripts', 'feedback_small_scripts');
 
-function feedback_big_scripts(){
+function feedback_big_scripts()
+{
     // Регистрируем скрипт
     wp_register_script(
         'feedback_big',
@@ -223,7 +227,8 @@ function feedback_big_scripts(){
         )
     );
 }
-function feedback_small_scripts(){
+function feedback_small_scripts()
+{
     // Регистрируем скрипт
     wp_register_script(
         'feedback_small',
@@ -298,7 +303,7 @@ function ajax_action_callback_big()
     $b_about = sanitize_text_field($_POST['b_about']);
 
 
-    
+
 
     // Массив ошибок
 
@@ -316,9 +321,9 @@ function ajax_action_callback_big()
     // Проверяем полей имени, если пустое, то пишем сообщение в массив ошибок
     if (empty($_POST['b_name']) || !isset($_POST['b_name'])) {
         $err_message['name'] = 'Пожалуйста, введите ваше имя.';
+        // $err_message['name'] = ' ';
     } else {
-    $b_name = sanitize_text_field($_POST['b_name']);
-
+        $b_name = sanitize_text_field($_POST['b_name']);
     }
 
     // Проверяем полей емайла, если пустое, то пишем сообщение в массив ошибок
@@ -359,8 +364,8 @@ function ajax_action_callback_big()
         $arr = array(
             'Name: ' => $b_name,
             't.number/messanger: ' => $b_messanger,
-            'Email' => $b_email,
-            'About' => $b_about,
+            'Email: ' => $b_email,
+            'About: ' => $b_about,
         );
 
         $text = " ";
@@ -446,7 +451,7 @@ function ajax_action_callback_small()
         $chatId = get_option('chatId');
         $chat_id = $chatId;
         $arr = array(
-            'Email' => $s_email,
+            'Email: ' => $s_email,
         );
 
         $text = " ";
@@ -467,7 +472,8 @@ function ajax_action_callback_small()
         }
 
         // Отправляем сообщение об успешной отправке
-        $message_success = 'Собщение отправлено. В ближайшее время я свяжусь с вами.';
+        // $message_success = 'Собщение отправлено. В ближайшее время я свяжусь с вами.';
+        $message_success = ' ';
         wp_send_json_success($message_success);
     }
 
